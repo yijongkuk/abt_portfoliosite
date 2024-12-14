@@ -183,16 +183,35 @@ timeline.fromTo(".rotating-line", {
   ease: "power2.inOut",
 }, 5);
 
+// 각 카드에 ScrollTrigger 애니메이션 추가
+document.querySelectorAll(".card").forEach((card) => {
+  gsap.fromTo(
+    card,
+    { opacity: 0, y: 50, scale: 1 }, // 초기 상태
+    {
+      opacity: 1,
+      y: 0,
+      scale: 1.2, // 중앙에서 약간 커짐
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: card,
+        start: () => `top ${window.innerHeight * 0.8}px`, // 화면 하단 80% 지점
+        end: () => `top ${window.innerHeight * 0.2}px`, // 화면 상단 20% 지점
+        scrub: true, // 스크롤에 따라 동기화
+        onUpdate: (self) => {
+          const progress = self.progress; // ScrollTrigger 진행 상태 (0 ~ 1)
+          const opacity = progress <= 0.5 ? progress * 2 : (1 - progress) * 2; // 중앙에서 opacity가 1
+          const scale = progress <= 0.5 ? 1 + progress * 0.2 : 1.2 - (progress - 0.5) * 0.2; // 중앙에서 scale 1.2로 증가
+          const translateY = (1 - progress) * 50; // 위아래로 살짝 움직임
 
-// Section 3 타이틀 애니메이션
-gsap.to("#section3-title", {
-  scrollTrigger: {
-    trigger: ".content3", // Section 3의 트리거
-    start: "top center", // Section 3가 화면 중앙에 올 때 시작
-    end: "top 100px", // 끝나는 시점 설정
-    scrub: true, // 스크롤과 동기화
-  },
-  opacity: 1, // 타이틀 보이기
-  y: 0, // 원래 위치로 이동
-  ease: "power2.out",
+          gsap.set(card, {
+            opacity: opacity,
+            y: translateY,
+            scale: scale,
+          });
+        },
+      },
+    }
+  );
 });

@@ -40,6 +40,7 @@ html {
     overflow: hidden;
     /* 추가 스크롤 제거 */
     scroll-snap-type: y mandatory;
+    padding-bottom: 350px; /* 하단 여백을 화면 높이만큼 추가 */
 }
 
 /* Section 기본 스타일 */

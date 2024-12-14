@@ -74,11 +74,6 @@ ScrollTrigger.create({
   end: "top top", // Section2가 화면 상단에 도달
   pin: false, // 고정하지 않음 (스냅만 적용)
   scrub: 0.5, // 부드럽게 스크롤
-  snap: {
-    snapTo: 0, // Section2의 시작점 (화면 상단)
-    duration: 0.3, // 스냅 지속 시간
-    ease: "power2.inOut", // 스냅 애니메이션 이징
-  },
 });
 
 // Timeline 생성 및 ScrollTrigger 연동

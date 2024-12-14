@@ -17,7 +17,7 @@ html {
 }
 
 .logo-img {
-    width: 100px;
+    width: 80px;
     height: auto;
     position: absolute; /* 두 로고를 겹치기 위해 */
     top: 0;

@@ -187,31 +187,31 @@ timeline.fromTo(".rotating-line", {
 document.querySelectorAll(".card").forEach((card) => {
   gsap.fromTo(
     card,
-    { opacity: 0, y: 50, scale: 1 }, // 초기 상태
+    { opacity: 0.2, scale: 0.9, y: 100 },
     {
       opacity: 1,
+      scale: 1.2, // 중앙에서 더 커지는 효과
       y: 0,
-      scale: 1.2, // 중앙에서 약간 커짐
       duration: 1,
       ease: "power2.out",
       scrollTrigger: {
         trigger: card,
-        start: () => `top ${window.innerHeight * 0.8}px`, // 화면 하단 80% 지점
-        end: () => `top ${window.innerHeight * 0.2}px`, // 화면 상단 20% 지점
-        scrub: true, // 스크롤에 따라 동기화
-        onUpdate: (self) => {
-          const progress = self.progress; // ScrollTrigger 진행 상태 (0 ~ 1)
-          const opacity = progress <= 0.5 ? progress * 2 : (1 - progress) * 2; // 중앙에서 opacity가 1
-          const scale = progress <= 0.5 ? 1 + progress * 0.2 : 1.2 - (progress - 0.5) * 0.2; // 중앙에서 scale 1.2로 증가
-          const translateY = (1 - progress) * 50; // 위아래로 살짝 움직임
-
-          gsap.set(card, {
-            opacity: opacity,
-            y: translateY,
-            scale: scale,
-          });
-        },
+        start: "top 80%", // 카드가 화면의 하단에서 시작
+        end: "top 30%", // 중앙에서 오래 머물도록 설정
+        scrub: true, // 스크롤과 동기화
       },
     }
   );
+
+  gsap.to(card, {
+    opacity: 0.2,
+    scale: 0.9, // 중앙을 지나면 다시 작아짐
+    y: -100, // 화면 상단으로 이동
+    scrollTrigger: {
+      trigger: card,
+      start: "top 30%", // 중앙을 지나갈 때 시작
+      end: "top 0%", // 상단으로 사라지는 구간
+      scrub: true, // 스크롤과 동기화
+    },
+  });
 });

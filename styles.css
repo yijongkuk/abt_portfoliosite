@@ -11,8 +11,8 @@ html {
 /* 로고 기본 스타일 */
 .logo {
     position: fixed;
-    top: 30px;
-    left: 30px;
+    top: 25px;
+    left: 25px;
     z-index: 1000;
 }
 

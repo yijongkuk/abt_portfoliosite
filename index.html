@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP Section Animation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- 고정 로고 -->
+    <div class="logo">
+        <a href="#section1">
+            <img src="images/logo_w.png" alt="White Logo" class="logo-img white-logo">
+            <img src="images/logo_b.png" alt="Black Logo" class="logo-img black-logo">
+        </a>
+    </div>
+
+    <div class="orange-circle"></div>
+    <div class="rotating-line"></div>
+
+    <div class="container">
+
+        <!-- Section 1 -->
+        <section id="section1" class="section content1">
+            <div class="frame-container"></div>
+            <h1 id="section1-title">Section 1</h1>
+        </section>
+
+
+        <!-- Section 2 -->
+        <section id="section2" class="section content2">
+            <div class="background-wrapper">
+                <img src="images/section2-bg.jpg" alt="Background" class="background-image">
+            </div>
+            <h1 class="title">Section 2</h1>
+            <div class="description">
+                <p>Discover amazing landscapes</p>
+                <p>Scroll down to explore more</p>
+            </div>
+        </section>
+
+        <!-- Section 3 -->
+        <section id="section3" class="content3">
+            <div class="cards-container">
+              <!-- 개별 카드 -->
+              <div class="card">
+                <div class="card-image">
+                  <img src="images/project1.jpg" alt="Project 1">
+                </div>
+                <div class="card-content">
+                  <h2>Project Title 1</h2>
+                  <p>Description for project 1. This is a brief overview of the project.</p>
+                </div>
+              </div>
+              <!-- 더 많은 카드가 여기에 추가 -->
+            </div>
+          </section>
+
+    </div>
+
+    <!-- GSAP 라이브러리 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+
+</html>

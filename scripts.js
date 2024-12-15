@@ -239,10 +239,10 @@ gsap.utils.toArray(".split").forEach((text) => {
   gsap.from(text.querySelectorAll("span"), {
       yPercent: 100,
       outoAlpha: 0,
-      duration: 2,
+      duration: 1,
       opacity: 0,
       ease: "circ.out",
-      //stagger: 0.04,
+      stagger: 0.04,
       stagger: {
           amount: 1,
           from: "random"
@@ -252,8 +252,8 @@ gsap.utils.toArray(".split").forEach((text) => {
           trigger: text,
           start: "+=1000 bottom",
           end: "+=400",
-          scrub: true,
           markers: false,
+          toggleActions: "play none none reverse",
       }
   });
 });

@@ -5,7 +5,7 @@ html {
     padding: 0;
     overflow-x: hidden;
     /* 가로 스크롤 제거 */
-    font-family: Arial, sans-serif;
+    font-family: "Lora", serif;
 }
 
 /* 로고 기본 스타일 */
@@ -55,7 +55,17 @@ html {
 
 .section h1 {
     font-size: 3rem;
+    font-weight: 400;
     color: white;
+}
+
+#section1 p {
+  font-size: 3rem;
+  color: white;
+}
+
+.split > span {
+  display: inline-block;
 }
 
 /* Section 2 */

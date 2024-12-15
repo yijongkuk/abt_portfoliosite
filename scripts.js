@@ -1,7 +1,6 @@
 // GSAP 플러그인 등록
 gsap.registerPlugin(ScrollTrigger);
 
-
 // 로고 색상 전환 애니메이션
 ScrollTrigger.create({
   trigger: ".content2", // Section 2의 끝을 기준으로 트리거
@@ -161,6 +160,7 @@ ScrollTrigger.create({
   start: "top top", // Section 3 시작
   end: "bottom top", // Section 3 끝날 때
   scrub: true,
+  markers: false,
   onUpdate: (self) => {
     const progress = self.progress; // 스크롤 진행 상태 (0~1)
     gsap.to(".orange-circle", {
@@ -213,5 +213,47 @@ document.querySelectorAll(".card").forEach((card) => {
       end: "top 0%", // 상단으로 사라지는 구간
       scrub: true, // 스크롤과 동기화
     },
+  });
+});
+
+
+document.querySelectorAll(".split").forEach(text => {
+  let theText = text.innerText;
+  let newText = "";
+
+  for(let i=0; i<text.innerText.length; i++){
+      newText += "<span aria-hidden='true'>";
+      if (text.innerText[i] == " "){
+          newText += " "
+      } else {
+          newText += text.innerText[i];
+      }
+      newText += "</span>";
+  }
+  text.innerHTML = newText;
+  text.setAttribute("aria-label", theText);
+});
+
+
+gsap.utils.toArray(".split").forEach((text) => {
+  gsap.from(text.querySelectorAll("span"), {
+      yPercent: 100,
+      outoAlpha: 0,
+      duration: 2,
+      opacity: 0,
+      ease: "circ.out",
+      //stagger: 0.04,
+      stagger: {
+          amount: 1,
+          from: "random"
+      },
+      
+      scrollTrigger: {
+          trigger: text,
+          start: "+=1000 bottom",
+          end: "+=400",
+          scrub: true,
+          markers: false,
+      }
   });
 });

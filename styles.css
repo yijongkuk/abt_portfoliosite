@@ -96,14 +96,15 @@ html {
   /* 타이틀 */
   .title {
     position: absolute;
-    top: 50%;
+    top: 46%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 3rem;
     color: white;
     z-index: 1;
     text-align: center;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.35); /* 드롭쉐도우 추가 */
+    opacity: 0;
+    line-height: 2.5rem;
   }
   
   /* 디스크립션 */
@@ -143,7 +144,7 @@ html {
     background-color: black;
     transform-origin: center center;
     transform: translate(-50%, -50%) rotate(45deg);
-    z-index: -2; /* 초기 상태에서 오렌지 원 아래 */
+    z-index: 1; /* 초기 상태에서 오렌지 원 아래 */
     opacity: 0; /* 기본적으로 숨김 */    
     transition: 1s ease;
 }

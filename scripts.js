@@ -98,11 +98,15 @@ timeline.to(".background-image", {
 
 // 타이틀 애니메이션
 timeline.to(".title", {
-  opacity: 0, // 투명도 변화
-  y: -50, // 위로 이동
+  opacity: 0.75, // 투명도 변화
+  y: 0, // 위로 이동
   duration: 5, // 지속 시간
   ease: "power2.out",
-}, 2); // 타임라인의 0초에 시작
+  stagger: {
+    amount: 0.5,
+    from: "random"
+  },
+}, -2); // 타임라인의 0초에 시작
 
 // 디스크립션 애니메이션
 timeline.to(".description", {
@@ -136,22 +140,6 @@ ScrollTrigger.create({
   start: "top top", // Section 2 시작
   end: "bottom top", // Section 2 끝
   scrub: true,
-  onEnter: () => {
-    gsap.to(".orange-circle", {
-      zIndex: 10, // Section 3에서 최상단으로 이동
-      y: "0", // 화면 중앙 고정
-      duration: 0.5,
-      ease: "power2.out",
-    });
-  },
-  onLeaveBack: () => {
-    gsap.to(".orange-circle", {
-      zIndex: -1, // Section 2로 돌아갈 때 최하단으로 이동
-      y: "0", // 위치 초기화
-      duration: 0.5,
-      ease: "power2.out",
-    });
-  },
 });
 
 // 오렌지 원 중앙 고정 상태 유지
@@ -176,7 +164,7 @@ timeline.fromTo(".rotating-line", {
   opacity: 0, // 처음에 보이지 않음
   rotate: 45, // 45도 각도에서 시작
 }, {
-  opacity: 0.35, // 선이 나타남
+  opacity: 0.15, // 선이 나타남
   rotate: -180, // 시계 반대방향으로 1바퀴 돌고 수직으로
   height: "150vmax", // 세로가 긴 디바이스에서는 100vh, 가로가 긴 디바이스에서는 100vw가 되도록
   duration: 7, // 오렌지 원 축소와 같은 타이밍으로 진행
@@ -221,14 +209,14 @@ document.querySelectorAll(".split").forEach(text => {
   let theText = text.innerText;
   let newText = "";
 
-  for(let i=0; i<text.innerText.length; i++){
-      newText += "<span aria-hidden='true'>";
-      if (text.innerText[i] == " "){
-          newText += " "
-      } else {
-          newText += text.innerText[i];
-      }
-      newText += "</span>";
+  for (let i = 0; i < text.innerText.length; i++) {
+    newText += "<span aria-hidden='true'>";
+    if (text.innerText[i] == " ") {
+      newText += " "
+    } else {
+      newText += text.innerText[i];
+    }
+    newText += "</span>";
   }
   text.innerHTML = newText;
   text.setAttribute("aria-label", theText);
@@ -237,23 +225,23 @@ document.querySelectorAll(".split").forEach(text => {
 
 gsap.utils.toArray(".split").forEach((text) => {
   gsap.from(text.querySelectorAll("span"), {
-      yPercent: 100,
-      autoAlpha: 0,
-      duration: 0.5,
-      opacity: 0,
-      ease: "circ.out",
-      stagger: 0.04,
-      stagger: {
-          amount: 0.5,
-          from: "random"
-      },
-      
-      scrollTrigger: {
-          trigger: text,
-          start: "+=1000 bottom",
-          end: "+=400",
-          markers: false,
-          toggleActions: "play none none reverse",
-      }
+    yPercent: 100,
+    autoAlpha: 0,
+    duration: 0.5,
+    opacity: 0,
+    ease: "circ.out",
+    stagger: 0.04,
+    stagger: {
+      amount: 0.5,
+      from: "random"
+    },
+
+    scrollTrigger: {
+      trigger: text,
+      start: "+=1000 bottom",
+      end: "+=400",
+      markers: false,
+      toggleActions: "play none none reverse",
+    }
   });
 });

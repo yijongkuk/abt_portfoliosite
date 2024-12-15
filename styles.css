@@ -5,7 +5,7 @@ html {
     padding: 0;
     overflow-x: hidden;
     /* 가로 스크롤 제거 */
-    font-family: "Lora", serif;
+    font-family: "Lora", "Noto Serif KR", serif;
 }
 
 /* 로고 기본 스타일 */
@@ -108,7 +108,7 @@ html {
   }
   
   /* 디스크립션 */
-  .description {
+  .desc {
     position: absolute;
     top: 50%;
     right: 5%;
@@ -116,8 +116,17 @@ html {
     color: #555;
     opacity: 0; /* 기본적으로 숨김 */
     text-align: right;
-    line-height: 0.5; /* 줄 간격 조정 */
+    line-height: 0.3rem; /* 줄 간격 조정 */
     z-index: 10;
+  }
+  
+  .desc-kr {
+    font-size: 1rem;
+  }
+
+  .text-spacer{
+    height: 0.05rem;
+    width: 100%;
   }
 
   .orange-circle {

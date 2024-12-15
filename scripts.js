@@ -120,13 +120,24 @@ section2Timeline
 // 디스크립션 애니메이션 추가
 section2Timeline
   .fromTo(
-    ".description",
+    ".desc",
     { opacity: 0, y: 30 },
     { opacity: 1, y: -50, duration: 2, ease: "power2.out" },
     1
   )
-  .to(".description", { y: -100, duration: 1.5, ease: "power2.inOut" })
-  .to(".description", { opacity: 0, y: -150, ease: "power2.in" });
+  .to(".desc", { y: -100, duration: 1.5, ease: "power2.inOut" })
+  .to(".desc", { opacity: 0, y: -150, ease: "power2.in" });
+
+  // 디스크립션 애니메이션 추가
+section2Timeline
+.fromTo(
+  ".desc-kr",
+  { opacity: 0, y: 50 },
+  { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
+  1.2
+)
+.to(".desc", { opacity: 0, y: -150, ease: "power2.in" });
+
 
 
 // 오렌지 원 등장 애니메이션

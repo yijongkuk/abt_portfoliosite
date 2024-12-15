@@ -18,6 +18,24 @@ ScrollTrigger.create({
   }
 });
 
+// 컨택트 색상 전환 애니메이션
+ScrollTrigger.create({
+  trigger: ".content2", // Section 2의 끝을 기준으로 트리거
+  start: "top -=1500", // Section 2 끝에서 시작
+  end: "bottom top", // 100px 더 내려간 후까지
+  onEnter: () => {
+    // 검정색 로고 나타남
+    gsap.to(".white-contact", { opacity: 0, duration: 0.5, ease: "power2.out" });
+    gsap.to(".black-contact", { opacity: 1, duration: 0.5, ease: "power2.out" });
+  },
+  onLeaveBack: () => {
+    // 흰색 로고 나타남
+    gsap.to(".white-contact", { opacity: 1, duration: 0.5, ease: "power2.out" });
+    gsap.to(".black-contact", { opacity: 0, duration: 0.5, ease: "power2.out" });
+  }
+});
+
+
 // Section 1: 스크롤 기반 프레임 애니메이션
 const frameCount = 35; // 총 프레임 수
 const images = [];
@@ -123,12 +141,12 @@ section2Timeline
     ".desc",
     { opacity: 0, y: 30 },
     { opacity: 1, y: -50, duration: 2, ease: "power2.out" },
-    1
+    0.7
   )
   .to(".desc", { y: -100, duration: 1.5, ease: "power2.inOut" })
   .to(".desc", { opacity: 0, y: -150, ease: "power2.in" });
 
-  // 디스크립션 애니메이션 추가
+  // 디스크립션(한글) 애니메이션 추가
 section2Timeline
 .fromTo(
   ".desc-kr",

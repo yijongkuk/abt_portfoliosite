@@ -6,6 +6,7 @@ html {
     overflow-x: hidden;
     /* 가로 스크롤 제거 */
     font-family: "Lora", "Noto Serif KR", serif;
+    font-weight: 600;
 }
 
 /* 로고 기본 스타일 */
@@ -33,6 +34,32 @@ html {
 
 .black-logo {
     opacity: 0;
+}
+
+.contact {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  z-index: 1000;
+}
+
+.contact-img {
+  width: 80px;
+  height: auto;
+  position: absolute; /* 두 로고를 겹치기 위해 */
+  top: 0;
+  right: 0;
+  transition: opacity 0.5s ease; /* 부드러운 전환 */
+  cursor: pointer;
+}
+
+/* 기본 상태에서 흰색 컨택트 보이기 */
+.white-contact {
+  opacity: 1;
+}
+
+.black-contact {
+  opacity: 0;
 }
 
 /* 컨테이너 */
@@ -113,6 +140,7 @@ html {
     top: 50%;
     right: 5%;
     font-size: 1.2rem;
+    font-weight: 500;
     color: #555;
     opacity: 0; /* 기본적으로 숨김 */
     text-align: right;
@@ -122,6 +150,7 @@ html {
   
   .desc-kr {
     font-size: 1rem;
+    font-weight: 100;
   }
 
   .text-spacer{
@@ -195,6 +224,7 @@ html {
   
   .card-content h2 {
     font-size: 1.8rem;
+    font-weight: 900;
     margin-bottom: 10px;
     color: #333;
   }

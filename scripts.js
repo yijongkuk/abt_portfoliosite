@@ -112,7 +112,7 @@ section2Timeline
   .fromTo(
     ".title",
     { y: 100, opacity: 0 },
-    { y: 0, opacity: 1, duration: 1.2, ease: "power2.out" },
+    { y: 0, opacity: 1, duration: 1.15, ease: "power2.out" },
     0
   )
   .to(".title", { y: 0, opacity: 0, duration: 0.5, ease: "power2.inOut" });
@@ -121,12 +121,12 @@ section2Timeline
 section2Timeline
   .fromTo(
     ".description",
-    { opacity: 0, y: 0 },
+    { opacity: 0, y: 30 },
     { opacity: 1, y: -50, duration: 2, ease: "power2.out" },
     1
   )
-  .to(".description", { y: -70, duration: 1.5, ease: "power2.inOut" })
-  .to(".description", { opacity: 0, y: -100, duration: 2, ease: "power2.in" });
+  .to(".description", { y: -100, duration: 1.5, ease: "power2.inOut" })
+  .to(".description", { opacity: 0, y: -150, ease: "power2.in" });
 
 
 // 오렌지 원 등장 애니메이션

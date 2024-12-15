@@ -96,25 +96,37 @@ timeline.to(".background-image", {
   ease: "power2.out",
 }, 3); // 타임라인의 0초에 시작
 
-// 타이틀 애니메이션
-timeline.to(".title", {
-  opacity: 0.75, // 투명도 변화
-  y: 0, // 위로 이동
-  duration: 5, // 지속 시간
-  ease: "power2.out",
-  stagger: {
-    amount: 0.5,
-    from: "random"
+// Section2 Timeline 생성
+const section2Timeline = gsap.timeline({
+  scrollTrigger: {
+    trigger: "section2", // Section2 트리거
+    start: "35% center", // 시작 시점
+    end: "bottom top", // 끝 시점
+    scrub: true, // 스크롤과 동기화
+    pin: true, // 섹션 고정
   },
-}, -2); // 타임라인의 0초에 시작
+});
 
-// 디스크립션 애니메이션
-timeline.to(".description", {
-  opacity: 1, // 투명도 변화
-  y: -50, // 원래 위치로 이동
-  duration: 5, // 지속 시간
-  ease: "power2.out",
-}, 2); // 타임라인의 0.5초에 시작 (살짝 딜레이)
+// 타이틀 애니메이션 추가
+section2Timeline
+  .fromTo(
+    ".title",
+    { y: 100, opacity: 0 },
+    { y: 0, opacity: 1, duration: 1.2, ease: "power2.out" },
+    0
+  )
+  .to(".title", { y: 0, opacity: 0, duration: 0.5, ease: "power2.inOut" });
+
+// 디스크립션 애니메이션 추가
+section2Timeline
+  .fromTo(
+    ".description",
+    { opacity: 0, y: 0 },
+    { opacity: 1, y: -50, duration: 2, ease: "power2.out" },
+    1
+  )
+  .to(".description", { y: -70, duration: 1.5, ease: "power2.inOut" })
+  .to(".description", { opacity: 0, y: -100, duration: 2, ease: "power2.in" });
 
 
 // 오렌지 원 등장 애니메이션

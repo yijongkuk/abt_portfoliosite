@@ -66,7 +66,7 @@ ScrollTrigger.create({
   },
 });
 
-// Section2 스냅 효과 추가
+// Section2: 스크롤 기반 애니메이션
 ScrollTrigger.create({
   trigger: ".content2",
   start: "top 90%", // Section2가 10% 보일 때 시작
@@ -238,13 +238,13 @@ document.querySelectorAll(".split").forEach(text => {
 gsap.utils.toArray(".split").forEach((text) => {
   gsap.from(text.querySelectorAll("span"), {
       yPercent: 100,
-      outoAlpha: 0,
-      duration: 1,
+      autoAlpha: 0,
+      duration: 0.5,
       opacity: 0,
       ease: "circ.out",
       stagger: 0.04,
       stagger: {
-          amount: 1,
+          amount: 0.5,
           from: "random"
       },
       

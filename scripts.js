@@ -112,39 +112,45 @@ timeline.to(".background-image", {
   opacity: 0,
   duration: 5, // 지속 시간
   ease: "power2.out",
-}, 3); // 타임라인의 0초에 시작
+}, 7); // 타임라인의 0초에 시작
 
 // Section2 Timeline 생성
 const section2Timeline = gsap.timeline({
   scrollTrigger: {
     trigger: "section2", // Section2 트리거
-    start: "35% center", // 시작 시점
+    start: "30% center", // 시작 시점
     end: "bottom top", // 끝 시점
     scrub: true, // 스크롤과 동기화
     pin: true, // 섹션 고정
   },
 });
 
+
+
+
 // 타이틀 애니메이션 추가
 section2Timeline
+  // 타이틀 나타남 애니메이션
   .fromTo(
     ".title",
-    { y: 100, opacity: 0 },
-    { y: 0, opacity: 1, duration: 1.15, ease: "power2.out" },
-    0
+    { y: 50, opacity: 0 }, // 초기 상태: 아래에서 올라오며 투명
+    { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }, // 화면 중앙에 도달하며 나타남
+    "+=0.5" // 추가 지연 시간을 설정
   )
-  .to(".title", { y: 0, opacity: 0, duration: 0.5, ease: "power2.inOut" });
+  // 타이틀 사라짐 애니메이션
+  .to(".title", { y: 0, opacity: 0, duration: 1, ease: "power2.out" });
 
+
+  
 // 디스크립션 애니메이션 추가
 section2Timeline
   .fromTo(
-    ".desc",
+    ".desc-r",
     { opacity: 0, y: 30 },
-    { opacity: 1, y: -50, duration: 2, ease: "power2.out" },
-    0.7
+    { opacity: 1, y: -50, duration: 1, ease: "power2.out" },
+    1.5
   )
-  .to(".desc", { y: -100, duration: 1.5, ease: "power2.inOut" })
-  .to(".desc", { opacity: 0, y: -150, ease: "power2.in" });
+  .to(".desc-r", { y: -100, duration: 1.5, ease: "power2.inOut" })
 
   // 디스크립션(한글) 애니메이션 추가
 section2Timeline
@@ -152,9 +158,30 @@ section2Timeline
   ".desc-kr",
   { opacity: 0, y: 50 },
   { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
-  1.2
+  1
 )
-.to(".desc", { opacity: 0, y: -150, ease: "power2.in" });
+.to(".desc-kr", { opacity: 0, y: -150, ease: "power2.in" });
+
+
+// 디스크립션 애니메이션 추가
+section2Timeline
+  .fromTo(
+    ".desc-l",
+    { opacity: 0, y: 30 },
+    { opacity: 1, y: -50, duration: 0.8, ease: "power2.out" },
+    1.8
+  )
+  .to(".desc-l", { y: -100, duration: 1.5, ease: "power2.inOut" })
+
+  // 디스크립션(한글) 애니메이션 추가
+section2Timeline
+.fromTo(
+  ".desc-kr",
+  { opacity: 0, y: 50 },
+  { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
+  1
+)
+.to(".desc-kr", { opacity: 0, y: -150, ease: "power2.in" });
 
 
 
@@ -168,8 +195,8 @@ timeline.to(".orange-circle", {
 
 // 오렌지 원 크기 축소 및 선명화
 timeline.to(".orange-circle", {
-  width: "60px", // 특정 크기로 설정
-  height: "60px", // 특정 크기로 설정
+  width: "80px", // 특정 크기로 설정
+  height: "80px", // 특정 크기로 설정
   filter: "blur(0px)",
   duration: 4,
   ease: "power2.inOut",
@@ -193,7 +220,7 @@ ScrollTrigger.create({
   onUpdate: (self) => {
     const progress = self.progress; // 스크롤 진행 상태 (0~1)
     gsap.to(".orange-circle", {
-      y: progress < 0.5 ? "0" : "100vh", // Section 3 아래로 배치
+      y: progress < 1 ? "0" : "100vh", // Section 3 아래로 배치
       duration: 0.3,
       ease: "power2.inOut",
     });
@@ -214,35 +241,26 @@ timeline.fromTo(".rotating-line", {
 
 // 각 카드에 ScrollTrigger 애니메이션 추가
 document.querySelectorAll(".card").forEach((card) => {
-  gsap.fromTo(
-    card,
-    { opacity: 0.2, scale: 0.9, y: 100 },
-    {
-      opacity: 1,
-      scale: 1.2, // 중앙에서 더 커지는 효과
-      y: 0,
-      duration: 1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: card,
-        start: "top 80%", // 카드가 화면의 하단에서 시작
-        end: "top 30%", // 중앙에서 오래 머물도록 설정
-        scrub: true, // 스크롤과 동기화
-      },
-    }
-  );
-
-  gsap.to(card, {
-    opacity: 0.2,
-    scale: 0.9, // 중앙을 지나면 다시 작아짐
-    y: -100, // 화면 상단으로 이동
+  const cardTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: card,
-      start: "top 30%", // 중앙을 지나갈 때 시작
-      end: "top 0%", // 상단으로 사라지는 구간
+      start: "top 80%", // 카드가 화면의 하단에서 시작
+      end: "top 0%", // 카드가 화면 상단으로 사라질 때까지
       scrub: true, // 스크롤과 동기화
     },
   });
+
+  // 확대 애니메이션
+  cardTimeline
+    .fromTo(
+      card,
+      { opacity: 0.2, scale: 0.9, y: 100 },
+      { opacity: 1, scale: 1.2, y: 0, duration: 1.5, ease: "power2.out" }
+    )
+    // 유지 단계
+    .to(card, { scale: 1.2, opacity: 1, duration: 1, ease: "power2.inOut" })
+    // 축소 애니메이션
+    .to(card, { opacity: 0.2, scale: 0.9, y: -100, duration: 1.5, ease: "power2.in" });
 });
 
 

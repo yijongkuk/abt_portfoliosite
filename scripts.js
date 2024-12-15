@@ -21,7 +21,7 @@ ScrollTrigger.create({
 // 컨택트 색상 전환 애니메이션
 ScrollTrigger.create({
   trigger: ".content2", // Section 2의 끝을 기준으로 트리거
-  start: "top -=1500", // Section 2 끝에서 시작
+  start: "top -=2000", // Section 2 끝에서 시작
   end: "bottom top", // 100px 더 내려간 후까지
   onEnter: () => {
     // 검정색 로고 나타남

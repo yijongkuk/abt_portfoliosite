@@ -299,6 +299,7 @@ gsap.utils.toArray(".split").forEach((text) => {
       trigger: text,
       start: "+=1000 bottom",
       end: "+=400",
+      scrub: true,
       markers: false,
       toggleActions: "play none none reverse",
     }

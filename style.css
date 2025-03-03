@@ -10,6 +10,10 @@ html {
   scroll-behavior: smooth;
 }
 
+a {
+  text-decoration: none;
+}
+
 h1 {
   margin: 0;
   padding: 30px;
@@ -18,6 +22,23 @@ h1 {
 h2 {
   margin: 0;
   padding: 0;
+}
+
+/* 메인 콘텐츠 래퍼 */
+.main-content {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* 팝업창 열릴 때 메인 콘텐츠 고정 */
+.main-content.no-scroll {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* 공통 섹션 스타일 */
@@ -103,15 +124,13 @@ h2 {
 .scroll-text {
   color: #fffffd;
   font-size: 9px;
-  font-family: "noto sans kr";
+  font-family: "Noto Sans KR";
   font-weight: 200;
-  ;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
 @keyframes arrowBounce {
-
   0%,
   20%,
   50%,
@@ -119,33 +138,12 @@ h2 {
   100% {
     transform: translateY(0) rotate(45deg);
   }
-
   40% {
     transform: translateY(-10px) rotate(45deg);
   }
-
   60% {
     transform: translateY(-5px) rotate(45deg);
   }
-}
-
-/* 배경 이미지 래퍼 */
-.background-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: -1;
-}
-
-.background-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(1) blur(0px);
-  transition: filter 0.3s ease;
 }
 
 /* 좌우 분할 레이아웃 (Section 1,2,3 등) */
@@ -195,9 +193,7 @@ h2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* 수직 중앙 정렬 */
   align-items: center;
-  /* 수평 중앙 정렬 */
   width: 100%;
   height: 100%;
   text-align: center;
@@ -217,7 +213,7 @@ h2 {
 }
 
 .circle-dot-orange {
-  margin-top: 100px;
+  margin-top: 160px;
   font-size: 1rem;
   margin-bottom: 0.5rem;
   color: #ff8800;
@@ -277,6 +273,14 @@ h2 {
     align-items: flex-start;
   }
 
+  .circle-dot-orange {
+    margin-top: 120px;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #ff8800;
+  }
+
+
   .split-left {
     align-items: flex-end !important;
     padding-bottom: 2rem;
@@ -316,24 +320,9 @@ h2 {
   .contact-img {
     width: 80px;
   }
-
-  .cards-container {
-    padding: 0 20px;
-  }
-
-  .card {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .card-image img {
-    width: 100%;
-    height: auto;
-  }
 }
 
 @media (min-width: 768px) and (max-width: 1200px) {
-
   .split-left,
   .split-right {
     padding: 2rem;
@@ -361,7 +350,6 @@ h2 {
 }
 
 @media (min-width: 1200px) {
-
   .split-left,
   .split-right {
     padding: 3rem;
@@ -407,10 +395,6 @@ h2 {
 
 #section6 {
   background-image: url('images/outro.jpg');
-}
-
-#section7 {
-  background-color: #363636;
 }
 
 .white-logo,
@@ -468,7 +452,7 @@ h2 {
   color: #fffffd;
 }
 
-/* 모바일 대응 - 섹션 4 캡션을 다른 섹션과 동일하게 맞춤 */
+/* 모바일 대응 - 섹션 4 캡션 */
 @media (max-width: 767px) {
   #section4 .caption {
     margin-right: 0;
@@ -476,98 +460,69 @@ h2 {
   }
 }
 
-/* 타이틀 스타일 */
-.center-content .title {
-  font-size: 1.6rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
-}
-
-/* 디스크립션 스타일 */
-.center-content .desc-kr {
-  font-size: 0.8rem;
-  font-weight: 100;
-}
-
-/* 오른쪽 하단 캡션 */
-#section4 .caption {
-  position: absolute;
-  bottom: 32px;
-  right: 32px;
-  font-size: 0.9rem;
-  color: #fffffd;
-}
-
-/* 오렌지 서클 요소 - 크기 축소 */
-#orange-circle-background {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 15vw; /* 기존 20vw에서 축소 */
-  height: 15vw; /* 기존 20vw에서 축소 */
-  background-color: rgba(255, 136, 0, 0.85);
-  border-radius: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  opacity: 0;
-  filter: blur(15px); /* 기본 블러 수정 */
-  z-index: 2; /* 낮은 z-index로 유지 */
-  pointer-events: none; /* 클릭 이벤트 무시 */
-}
-
-/* 섹션 5 배경 투명화 및 오렌지 서클 관련 스타일 수정 */
+/* 섹션 5 스타일 */
 #section5 {
-  background-color: transparent !important; /* 배경색 투명하게 변경 */
+  background-color: transparent !important;
   position: relative;
   padding: 100px 0 150px;
-  z-index: 5; /* 섹션의 z-index 값을 높게 설정 */
+  z-index: 5;
   overflow-y: auto;
   height: auto;
   min-height: 100vh;
 }
 
-/* 섹션 5 배경 투명화 및 오렌지 서클 관련 스타일 수정 */
-#section5 {
-  background-color: transparent !important; /* 배경색 투명하게 변경 */
-  position: relative;
-  padding: 100px 0 150px;
-  z-index: 5; /* 섹션의 z-index 값을 높게 설정 */
-  overflow-y: auto;
-  height: auto;
-  min-height: 100vh;
-}
-
-/* 섹션 5에서는 배경 필터 제거 */
 #section5::before {
   content: none;
 }
 
-/* 오렌지 서클 요소 - 크기 1/10으로 축소 */
+/* 오렌지 서클 요소 */
 #orange-circle-background {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 20vw; /* 기존 200vw에서 1/10로 축소 */
-  height: 20vw; /* 기존 200vw에서 1/10로 축소 */
+  width: 20vw;
+  height: 20vw;
   background-color: rgba(255, 136, 0, 0.85);
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(0);
   opacity: 0;
-  filter: blur(20px); /* 크기에 맞게 블러 효과도 축소 */
-  z-index: 2; /* 낮은 z-index로 설정하여 콘텐츠 뒤에 위치하도록 */
-  pointer-events: none; /* 클릭 이벤트 무시 */
+  filter: blur(20px);
+  z-index: 2;
+  pointer-events: none;
 }
 
-/* 기존 포트폴리오 아이템 스타일 유지 */
+/* 포트폴리오 내부 컨테이너 */
+.portfolio-inner {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 3rem;
+  color: #333;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 10;
+}
+
+/* 포트폴리오 리스트 */
+.portfolio-list {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+  margin-top: 50px;
+}
+
+/* 포트폴리오 아이템 */
 .portfolio-item {
   display: flex;
   align-items: center;
   gap: 30px;
   position: relative;
-  background-color: transparent; /* 투명한 배경 유지 */
-  padding: 20px 0; /* 기존 패딩 유지 */
+  background-color: transparent;
+  padding: 20px 0;
   width: 100%;
   box-sizing: border-box;
-  z-index: 10; /* 오렌지 서클 위에 표시 */
+  z-index: 10;
+  cursor: pointer;
 }
 
 /* 포트폴리오 이미지 */
@@ -587,37 +542,7 @@ h2 {
   transform-origin: center center;
 }
 
-/* 포트폴리오 내부 컨테이너 */
-.portfolio-inner {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 3rem;
-  color: #333;
-  box-sizing: border-box;
-  position: relative;
-  z-index: 10; /* 내용이 오렌지 서클 위에 표시되도록 */
-}
-
-/* 포트폴리오 리스트 */
-.portfolio-list {
-  display: flex;
-  flex-direction: column;
-  gap: 120px;
-  margin-top: 50px;
-}
-
-/* 센서 영역 */
-.section-snap-sensor {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 10px;
-  z-index: 20; /* 높은 z-index로 설정 */
-}
-
-/* 포트폴리오 콘텐츠 영역 */
+/* 포트폴리오 콘텐츠 */
 .portfolio-content {
   flex: 1;
   max-width: 48%;
@@ -650,15 +575,13 @@ h2 {
   line-height: 1.5;
 }
 
-/* 섹션 5 모바일 가운데 정렬 수정 */
+/* 섹션 5 반응형 */
 @media (max-width: 767px) {
   .portfolio-item {
     flex-direction: column;
     gap: 30px;
     align-items: center;
-    /* 중앙 정렬로 변경 */
     text-align: center;
-    /* 텍스트도 중앙 정렬 */
   }
 
   .portfolio-image {
@@ -666,49 +589,26 @@ h2 {
     width: 100%;
     height: 300px;
     max-width: 500px;
-    /* 이미지 최대 너비 제한 */
     margin: 0 auto;
-    /* 중앙 정렬 */
   }
 
   .portfolio-content {
     max-width: 100%;
     padding: 10px 20px;
-    /* 양쪽 패딩 추가 */
     margin: 0 auto;
-    /* 중앙 정렬 */
     text-align: center;
-    /* 텍스트 중앙 정렬 */
   }
 
   .portfolio-content h3 {
     text-align: center;
-    /* 제목 중앙 정렬 */
   }
 
   .portfolio-desc-en,
   .portfolio-desc-kr {
     text-align: center;
-    /* 설명 중앙 정렬 */
     max-width: 500px;
-    /* 텍스트 최대 너비 제한 */
     margin-left: auto;
     margin-right: auto;
-  }
-
-  /* 포트폴리오 아이템별 작은 서클도 중앙으로 */
-  .portfolio-circle {
-    position: relative;
-    bottom: auto;
-    right: auto;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 15px;
-  }
-
-  .portfolio-item:hover .portfolio-circle {
-    opacity: 1;
-    transform: translateX(-50%) scale(1.2);
   }
 
   .portfolio-list {
@@ -720,19 +620,6 @@ h2 {
   }
 }
 
-/* 섹션 6 스냅 센서 영역 */
-.section-snap-sensor {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 10px;
-  /* 높이는 작게 설정 - 눈에 보이지 않음 */
-  background-color: transparent;
-  z-index: -1;
-}
-
-/* 반응형 미디어 쿼리 */
 @media (max-width: 1024px) {
   .portfolio-image {
     flex: 0 0 360px;
@@ -803,13 +690,23 @@ h2 {
   }
 }
 
-/* Section 6 - 컨택트 섹션 스타일 업데이트 */
+/* 섹션 6 스냅 센서 영역 */
+.section-snap-sensor {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background-color: transparent;
+  z-index: -1;
+}
+
+/* Section 6 - 컨택트 섹션 스타일 */
 .contact-section {
   position: relative;
   height: auto;
   min-height: 100vh;
   background-color: #D8471D;
-  /* 이미지의 주황색 배경 */
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -817,7 +714,6 @@ h2 {
   overflow: hidden;
 }
 
-/* 섹션 6에 배경 필터 추가 (섹션 1~3과 동일) */
 .contact-section::before {
   content: "";
   position: absolute;
@@ -826,18 +722,15 @@ h2 {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.4);
-  /* 투명 검정색 필터 */
   z-index: 0;
 }
 
 .contact-inner {
   max-width: 1200px;
-  width: 100%;
   margin: 0 auto;
   padding: 80px 20px;
   position: relative;
   z-index: 1;
-  /* 필터 위에 콘텐츠 표시 */
 }
 
 /* 컨택트 타이틀 */
@@ -919,13 +812,11 @@ h2 {
   opacity: 0.9;
 }
 
-
-/* 모바일 가운데 정렬 미디어 쿼리 추가 */
+/* 섹션 6 반응형 */
 @media (max-width: 1119px) {
   .contact-inner {
     padding: 120px 20px;
     text-align: center;
-    /* 전체 텍스트 중앙 정렬 */
   }
 
   .contact-title,
@@ -936,7 +827,6 @@ h2 {
     text-align: center;
   }
 
-  /* 컨택트 정보 중앙 정렬 */
   .contact-info {
     max-width: 500px;
   }
@@ -964,7 +854,6 @@ h2 {
     color: #fffffffd;
   }
 
-  /* 팀 멤버 중앙 정렬 */
   .team-container {
     flex-direction: column;
     gap: 30px;
@@ -987,14 +876,12 @@ h2 {
     color: #fffffffd;
   }
 
-  /* 저작권 정보도 중앙 정렬 */
   .copyright {
     margin-top: 70px;
     text-align: center;
     font-size: 0.7rem;
   }
 }
-
 
 @media (max-width: 767px) {
   .contact-inner {
@@ -1030,24 +917,20 @@ h2 {
 .footer {
   width: 100%;
   background-color: #fffffd;
-  /* 필요하면 색상 변경 */
   color: #333;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  /* 위쪽 정렬 */
   padding: 50px;
   box-sizing: border-box;
 }
 
-/* 왼쪽/오른쪽 칸 */
 .footer-left,
 .footer-right {
   max-width: 50%;
   line-height: 1.4;
 }
 
-/* 왼쪽 타이틀 */
 .footer-left h2 {
   font-family: "Lora";
   margin: 0 0 10px 0;
@@ -1056,7 +939,6 @@ h2 {
   color: #333;
 }
 
-/* 일반 텍스트 스타일 */
 .footer-left p,
 .footer-right p {
   font-family: sans-serif;
@@ -1065,7 +947,7 @@ h2 {
   font-size: 0.8rem;
 }
 
-/* 반응형 (모바일에서 세로 스택) */
+/* 푸터 반응형 */
 @media (max-width: 767px) {
   .footer {
     flex-direction: column;
@@ -1083,4 +965,80 @@ h2 {
     margin-bottom: 20px;
     font-size: 0.7rem;
   }
+}
+
+/* 팝업창 오버레이 */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 2000;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* 팝업창 컨테이너 */
+.popup-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  max-width: 1920px; /* 최대 너비 제한 추가 */
+  height: 90vh;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  z-index: 2001;
+}
+
+/* 팝업창 콘텐츠 */
+.popup-content {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 팝업창 닫기 버튼 */
+.popup-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 30px;
+  height: 30px;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2002;
+  transition: background 0.3s ease;
+}
+
+.popup-close:hover {
+  background: #ff8800;
+}
+
+/* 팝업창 이미지 스타일 */
+.popup-content img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 80vh;
+  max-width: 100%; /* 이미지가 부모 컨테이너를 넘지 않도록 */
 }

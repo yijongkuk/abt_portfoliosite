@@ -529,11 +529,11 @@ h2 {
 .portfolio-image {
   flex: 1;
   max-width: 48%;
-  border-radius: 20px;
+  border-radius: 16px;
   height: 320px;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
 }
 
 .portfolio-image img {

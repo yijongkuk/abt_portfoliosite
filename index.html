@@ -115,14 +115,12 @@
     </div>
   </section>
 
-  <!-- 오렌지 원 -->
-  <div class="orange-circle"></div>
-
   <!-- Section 4: 가운데 배경 + 중앙 텍스트 + 오른쪽 하단 캡션 -->
   <section id="section4" class="section center-section" data-theme="dark">
 
     <!-- 중앙 정렬 콘텐츠 -->
     <div class="center-content">
+      <h4 class="circle-dot-orange">●</h4>
       <h2 class="intro-title">Ready to Make Your Brand a Unique Identity?</h2>
       <p class="intro-desc-kr">함께하면, 당신의 상상은 현실이 됩니다.</p>
     </div>
@@ -133,151 +131,140 @@
     </div>
   </section>
 
-  <!-- Section 5: 포트폴리오 섹션 -->
-  <section id="section5" class="section portfolio-section" data-theme="light" data-snap="false">
-    <div class="portfolio-inner">
-
-      <div class="portfolio-list">
-        <!-- 포트폴리오 아이템 1 -->
-        <div class="portfolio-item">
-          <div class="portfolio-image">
-            <img src="images/project_001.jpg" alt="Bellsn" />
-          </div>
-          <div class="portfolio-content">
-            <h3>Bellsn</h3>
-            <p class="portfolio-desc-en">
-              Graceful design pleases the eye, but thoughtful design touches the soul. Our robust creations offer a way
-              of life that seeks purposeful beauty.
-            </p>
-            <p class="portfolio-desc-kr">
-              유려한 디자인은 사용자의 눈을 즐겁게 합니다. 그러나, 내부까지 고려한 디자인은 사용자의 삶에 다가갑니다. 우리의 견고한 디자인은 유용한 아름다움을 찾는 삶에 한 나의 방식이 될 것입니다.
-            </p>
-            <div class="portfolio-circle"></div>
-          </div>
+  <!-- Section 5: 포트폴리오 섹션 - 오렌지 서클을 섹션 5에만 표시 -->
+<section id="section5" class="section portfolio-section" data-theme="light" data-snap="false">
+  <!-- 오렌지 서클 요소 - absolute 포지션으로 섹션 5 내부에만 위치 -->
+  <div id="orange-circle-background"></div>
+  
+  <!-- 포트폴리오 콘텐츠 -->
+  <div class="portfolio-inner">
+    <div class="portfolio-list">
+      <!-- 포트폴리오 아이템 1 -->
+      <div class="portfolio-item">
+        <div class="portfolio-image">
+          <img src="images/project_001.jpg" alt="Bellsn" />
         </div>
-
-        <!-- 포트폴리오 아이템 2 -->
-        <div class="portfolio-item">
-          <div class="portfolio-image">
-            <img src="images/project_002.jpg" alt="Analogram" />
-          </div>
-          <div class="portfolio-content">
-            <h3>Analogram</h3>
-            <p class="portfolio-desc-en">
-              The name is a combination of ‘analog’ and ‘RAM,’ meaning ‘analog memory device.’<br>
-              We hope that the objects carrying our perspectives and thoughts will reach you with new meaning.
-
-            </p>
-            <p class="portfolio-desc-kr">
-              ‘analog’와 ‘ram’의 합성어로 ‘아날로그 기억장치’라는 의미를 가진 이름입니다.<br>
-              우리의 시선과 생각이 담긴 대상이 새로운 의미로서 당신에게 전달되기를 바랍니다.
-            </p>
-            <div class="portfolio-circle"></div>
-          </div>
-        </div>
-
-        <!-- 포트폴리오 아이템 3 -->
-
-
-        <div class="portfolio-item">
-          <div class="portfolio-image">
-            <img src="images/project_003.jpg" alt="TinsMerry" />
-          </div>
-          <div class="portfolio-content">
-            <h3>TinsMerry</h3>
-            <p class="portfolio-desc-en">
-              All TinsMerry products are designed based on items from the adventure story.
-            </p>
-            <p class="portfolio-desc-kr">
-              ‘TinsMerry’의 모든 제품은 모험이야기에 나오는 아이템을 기반으로 제작되었습니다.
-            </p>
-            <div class="portfolio-circle"></div>
-          </div>
-        </div>
-
-        <!-- 포트폴리오 아이템 4 -->
-        <div class="portfolio-item">
-          <div class="portfolio-image">
-            <img src="images/project_007.jpg" alt="Gentle Monster" />
-          </div>
-          <div class="portfolio-content">
-            <h3>Gentle Monster</h3>
-            <p class="portfolio-desc-en">
-              Redefining luxury eyewear through bold design and artistic expression.
-            </p>
-            <p class="portfolio-desc-kr">
-              대담한 디자인과 예술적 표현을 통해 럭셔리 아이웨어를 재정의합니다.
-            </p>
-            <div class="portfolio-circle"></div>
-          </div>
-        </div>
-
-        <!-- 포트폴리오 아이템 5 -->
-        <div class="portfolio-item">
-          <div class="portfolio-image">
-            <img src="images/project_006.jpg" alt="Meal Do" />
-          </div>
-          <div class="portfolio-content">
-            <h3>Meal Do - Ikseondong</h3>
-            <p class="portfolio-desc-en">
-              Blending traditional Korean aesthetics with modern dining experiences in the heart of Ikseondong.
-            </p>
-            <p class="portfolio-desc-kr">
-              익선동의 중심에서 전통적인 한국의 미학과 현대적인 식사 경험을 결합합니다.
-            </p>
-            <div class="portfolio-circle"></div>
-          </div>
-        </div>
-
-        <!-- 포트폴리오 아이템 6 -->
-        <div class="portfolio-item">
-          <div class="portfolio-image">
-            <img src="images/project_004.jpg" alt="Chanel" />
-          </div>
-          <div class="portfolio-content">
-            <h3>Chanel</h3>
-            <p class="portfolio-desc-en">
-              The entire space is designed to reflect the brand’s philosophy of promoting natural and confident male
-              beauty.
-            </p>
-            <p class="portfolio-desc-kr">
-              자연스럽고 자신감 있는 남성 뷰티를 제안하는 브랜드 철학을 공간 전체에서 느낄 수 있도록 구성하였습니다.
-            </p>
-            <div class="portfolio-circle"></div>
-          </div>
-        </div>
-
-        <!-- 포트폴리오 아이템 7 -->
-        <div class="portfolio-item">
-          <div class="portfolio-image">
-            <img src="images/project_008.jpg" alt="Etc Projects" />
-          </div>
-          <div class="portfolio-content">
-            <h3>Etc Projects</h3>
-            <p class="portfolio-desc-en">
-              ABT is a creative collective that turns imagination into reality.<br>
-              To bring your vision to life,<br>
-              we offer exceptional brand development experiences driven by creativity
-            </p>
-            <p class="portfolio-desc-kr">
-              ABT는 여러분이 상상하는 이미지를 현실로 만드는 크리에이티브 집단입니다.<br>
-              여러분의 비전을 실현하기 위해, 우리는 창의성과 혁신을 바탕으로 탁월한 브랜드 전개 경험을 제공합니다.
-            </p>
-            <div class="portfolio-circle"></div>
-          </div>
+        <div class="portfolio-content">
+          <h3>Bellsn</h3>
+          <p class="portfolio-desc-en">
+            Graceful design pleases the eye, but thoughtful design touches the soul. Our robust creations offer a way
+            of life that seeks purposeful beauty.
+          </p>
+          <p class="portfolio-desc-kr">
+            유려한 디자인은 사용자의 눈을 즐겁게 합니다. 그러나, 내부까지 고려한 디자인은 사용자의 삶에 다가갑니다. 우리의 견고한 디자인은 유용한 아름다움을 찾는 삶에 한 나의 방식이 될 것입니다.
+          </p>
         </div>
       </div>
-    </div>
 
-    <!-- 섹션 6 스냅을 위한 센서 영역 -->
-    <div class="section-snap-sensor" data-target="section6"></div>
-  </section>
+      <!-- 포트폴리오 아이템 2 -->
+      <div class="portfolio-item">
+        <div class="portfolio-image">
+          <img src="images/project_002.jpg" alt="Analogram" />
+        </div>
+        <div class="portfolio-content">
+          <h3>Analogram</h3>
+          <p class="portfolio-desc-en">
+            The name is a combination of 'analog' and 'RAM,' meaning 'analog memory device.'<br>
+            We hope that the objects carrying our perspectives and thoughts will reach you with new meaning.
+          </p>
+          <p class="portfolio-desc-kr">
+            'analog'와 'ram'의 합성어로 '아날로그 기억장치'라는 의미를 가진 이름입니다.<br>
+            우리의 시선과 생각이 담긴 대상이 새로운 의미로서 당신에게 전달되기를 바랍니다.
+          </p>
+        </div>
+      </div>
 
+      <!-- 포트폴리오 아이템 3 -->
+      <div class="portfolio-item">
+        <div class="portfolio-image">
+          <img src="images/project_003.jpg" alt="TinsMerry" />
+        </div>
+        <div class="portfolio-content">
+          <h3>TinsMerry</h3>
+          <p class="portfolio-desc-en">
+            All TinsMerry products are designed based on items from the adventure story.
+          </p>
+          <p class="portfolio-desc-kr">
+            'TinsMerry'의 모든 제품은 모험이야기에 나오는 아이템을 기반으로 제작되었습니다.
+          </p>
+        </div>
+      </div>
 
-  <!-- HTML 문서에 오렌지 서클이 없는 경우 이 코드를 추가하세요 -->
-  <!-- 오렌지 원 - body 태그 안에 추가 (section5 바로 앞에) -->
-  <div class="orange-circle"></div>
+          <!-- 포트폴리오 아이템 4 -->
+          <div class="portfolio-item">
+            <div class="portfolio-image">
+              <img src="images/project_007.jpg" alt="Gentle Monster" />
+            </div>
+            <div class="portfolio-content">
+              <h3>Gentle Monster</h3>
+              <p class="portfolio-desc-en">
+                Redefining luxury eyewear through bold design and artistic expression.
+              </p>
+              <p class="portfolio-desc-kr">
+                대담한 디자인과 예술적 표현을 통해 럭셔리 아이웨어를 재정의합니다.
+              </p>
+            </div>
+          </div>
 
+          <!-- 포트폴리오 아이템 5 -->
+          <div class="portfolio-item">
+            <div class="portfolio-image">
+              <img src="images/project_006.jpg" alt="Meal Do" />
+            </div>
+            <div class="portfolio-content">
+              <h3>Meal Do - Ikseondong</h3>
+              <p class="portfolio-desc-en">
+                Blending traditional Korean aesthetics with modern dining experiences in the heart of Ikseondong.
+              </p>
+              <p class="portfolio-desc-kr">
+                익선동의 중심에서 전통적인 한국의 미학과 현대적인 식사 경험을 결합합니다.
+              </p>
+            </div>
+          </div>
+
+          <!-- 포트폴리오 아이템 6 -->
+          <div class="portfolio-item">
+            <div class="portfolio-image">
+              <img src="images/project_004.jpg" alt="Chanel" />
+            </div>
+            <div class="portfolio-content">
+              <h3>Chanel</h3>
+              <p class="portfolio-desc-en">
+                The entire space is designed to reflect the brand’s philosophy of promoting natural and confident male
+                beauty.
+              </p>
+              <p class="portfolio-desc-kr">
+                자연스럽고 자신감 있는 남성 뷰티를 제안하는 브랜드 철학을 공간 전체에서 느낄 수 있도록 구성하였습니다.
+              </p>
+            </div>
+          </div>
+
+          <!-- 포트폴리오 아이템 7 -->
+          <div class="portfolio-item">
+            <div class="portfolio-image">
+              <img src="images/project_008.jpg" alt="Etc Projects" />
+            </div>
+            <div class="portfolio-content">
+              <h3>Etc Projects</h3>
+              <p class="portfolio-desc-en">
+                ABT is a creative collective that turns imagination into reality.<br>
+                To bring your vision to life,<br>
+                we offer exceptional brand development experiences driven by creativity
+              </p>
+              <p class="portfolio-desc-kr">
+                ABT는 여러분이 상상하는 이미지를 현실로 만드는 크리에이티브 집단입니다.<br>
+                여러분의 비전을 실현하기 위해, 우리는 창의성과 혁신을 바탕으로 탁월한 브랜드 전개 경험을 제공합니다.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    
+      <!-- 섹션 6 스냅을 위한 센서 영역 -->
+      <div class="section-snap-sensor" data-target="section6"></div>
+    </section>
+    
   <!-- Section 6: 컨택트 섹션 -->
   <section id="section6" class="section contact-section" data-theme="dark">
     <div class="contact-inner">

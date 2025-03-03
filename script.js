@@ -1,6 +1,8 @@
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
 // 전역 변수
 let isScrolling = false;
-const scrollDelay = 800; // 스크롤 애니메이션 지연시간 (ms)
+let isAnimating = false; // 애니메이션 진행 중 상태 추적
 
 // 페이지 로드 시 실행
 window.addEventListener("DOMContentLoaded", () => {
@@ -21,6 +23,9 @@ window.addEventListener("DOMContentLoaded", () => {
   
   // 개선된 스크롤 스냅 설정
   setupImprovedScrollSnap();
+  
+  // 포트폴리오 아이템 호버 이벤트 설정
+  setupPortfolioHoverEffects();
 });
 
 // 스크롤 인디케이터 표시/숨김
@@ -28,13 +33,12 @@ function fadeScrollIndicator() {
   const scrollIndicator = document.querySelector('.scroll-indicator');
   if (!scrollIndicator) return;
   
-  // 스크롤 이벤트 발생 시 인디케이터 숨김
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
     if (scrollY > 100) {
-      gsap.to(scrollIndicator, { opacity: 0, duration: 0.5 });
+      gsap.to(scrollIndicator, { opacity: 0, duration: 0.3 });
     } else {
-      gsap.to(scrollIndicator, { opacity: 1, duration: 0.5 });
+      gsap.to(scrollIndicator, { opacity: 1, duration: 0.3 });
     }
   });
 }
@@ -69,7 +73,7 @@ function setupThemeSwitching() {
     
     ScrollTrigger.create({
       trigger: sec,
-      start: "top 50%", // 섹션이 화면 중앙에 도달했을 때 테마 전환
+      start: "top 50%",
       end: "bottom 50%",
       onEnter: () => applyTheme(theme),
       onEnterBack: () => applyTheme(theme)
@@ -80,11 +84,11 @@ function setupThemeSwitching() {
 // 테마 적용 함수
 function applyTheme(theme) {
   if (theme === "dark") {
-    gsap.to(".white-logo, .white-contact", { opacity: 1, duration: 0.5 });
-    gsap.to(".black-logo, .black-contact", { opacity: 0, duration: 0.5 });
+    gsap.to(".white-logo, .white-contact", { opacity: 1, duration: 0.3 });
+    gsap.to(".black-logo, .black-contact", { opacity: 0, duration: 0.3 });
   } else {
-    gsap.to(".white-logo, .white-contact", { opacity: 0, duration: 0.5 });
-    gsap.to(".black-logo, .black-contact", { opacity: 1, duration: 0.5 });
+    gsap.to(".white-logo, .white-contact", { opacity: 0, duration: 0.3 });
+    gsap.to(".black-logo, .black-contact", { opacity: 1, duration: 0.3 });
   }
 }
 
@@ -119,29 +123,29 @@ function setupSplitSectionAnimations() {
     const caption = section.querySelector(".caption");
     const allElements = [circle, title, descEn, descKr].filter(el => el);
     
-    gsap.set(allElements, { opacity: 0, y: 50 });
-    if (caption) gsap.set(caption, { opacity: 0, y: 50 });
+    gsap.set(allElements, { opacity: 0, y: 30 });
+    if (caption) gsap.set(caption, { opacity: 0, y: 30 });
     
     gsap.timeline({
       scrollTrigger: {
         trigger: section,
-        start: "top 60%", // 섹션이 화면 60% 위치에 도달했을 때 애니메이션 시작
+        start: "top 60%",
         toggleActions: "play none none none"
       }
     })
     .to(allElements, { 
       y: 0, 
       opacity: 1, 
-      duration: 0.5, 
-      stagger: 0.2, 
+      duration: 0.4, 
+      stagger: 0.1, 
       ease: "power2.out" 
     })
     .to(caption, { 
       y: 0, 
       opacity: 1, 
-      duration: 0.5, 
+      duration: 0.4, 
       ease: "power2.out" 
-    }, "-=0.4");
+    }, "-=0.2");
   });
 }
 
@@ -158,18 +162,18 @@ function setupSection4Animation() {
     }
   })
   .fromTo(section4.querySelector(".intro-title"), 
-    { opacity: 0, y: 50 }, 
-    { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+    { opacity: 0, y: 30 }, 
+    { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }
   )
   .fromTo(section4.querySelector(".intro-desc-kr"), 
-    { opacity: 0, y: 50 }, 
-    { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
-    "-=0.5"
+    { opacity: 0, y: 30 }, 
+    { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+    "-=0.3"
   )
   .fromTo(section4.querySelector(".caption"), 
-    { opacity: 0, y: 30 }, 
-    { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
-    "-=0.5"
+    { opacity: 0, y: 20 }, 
+    { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+    "-=0.3"
   );
 }
 
@@ -188,11 +192,11 @@ function setupSection5Animation() {
       
       // 이미지 애니메이션 (왼쪽에서 등장)
       gsap.fromTo(itemImage, 
-        { opacity: 0, x: -100 }, 
+        { opacity: 0, x: -50 }, 
         { 
           opacity: 1, 
           x: 0, 
-          duration: 1,
+          duration: 0.7,
           ease: "power2.out",
           scrollTrigger: {
             trigger: item,
@@ -204,12 +208,12 @@ function setupSection5Animation() {
       
       // 내용 애니메이션 (오른쪽에서 등장)
       gsap.fromTo(itemContent, 
-        { opacity: 0, x: 100 }, 
+        { opacity: 0, x: 50 }, 
         { 
           opacity: 1, 
           x: 0, 
-          duration: 1,
-          delay: 0.2,
+          duration: 0.7,
+          delay: 0.1,
           ease: "power2.out",
           scrollTrigger: {
             trigger: item,
@@ -218,32 +222,6 @@ function setupSection5Animation() {
           }
         }
       );
-      
-      // 이미지 호버 효과 초기화 - 충돌 방지를 위해 GSAP로 처리
-      const img = item.querySelector('.portfolio-image img');
-      if (img) {
-        // 초기 상태 설정 - transform 속성을 명시적으로 초기화
-        gsap.set(img, { scale: 1, filter: "brightness(1)" });
-        
-        // 호버 이벤트 리스너
-        item.addEventListener('mouseenter', () => {
-          gsap.to(img, {
-            scale: 1.05,
-            filter: "brightness(1.05)",
-            duration: 0.6,
-            ease: "power2.out"
-          });
-        });
-        
-        item.addEventListener('mouseleave', () => {
-          gsap.to(img, {
-            scale: 1,
-            filter: "brightness(1)",
-            duration: 0.6,
-            ease: "power2.out"
-          });
-        });
-      }
     });
   }
   
@@ -263,11 +241,11 @@ function setupSection5TopSensor() {
   // 섹션 5의 상단 부분에 스크롤 트리거 추가
   ScrollTrigger.create({
     trigger: section5,
-    start: "top bottom",  // 섹션 5의 상단이 화면 하단에 닿을 때
-    end: "top top",      // 섹션 5의 상단이 화면 상단에 닿을 때
+    start: "top bottom",
+    end: "top top",
     onLeaveBack: () => {
       // 스크롤 방향이 위로 갈 때 섹션 4로 자동 스크롤
-      if (!isScrolling) {
+      if (!isScrolling && !isAnimating) {
         const sections = Array.from(document.querySelectorAll(".section"));
         const sectionIndex = sections.indexOf(section4);
         if (sectionIndex >= 0) {
@@ -285,10 +263,6 @@ function setupSection6Sensor() {
   
   if (!sensor || !section6) return;
   
-  // 센서의 타겟 섹션 ID 설정
-  const targetSectionId = sensor.getAttribute('data-target');
-  
-  // 센서 영역이 화면에 보이면 특수 효과 적용 (선택 사항)
   ScrollTrigger.create({
     trigger: sensor,
     start: "top 80%",
@@ -299,7 +273,7 @@ function setupSection6Sensor() {
       if (scrollIndicator) {
         gsap.to(scrollIndicator, { 
           opacity: 1, 
-          duration: 0.5 
+          duration: 0.3 
         });
       }
     },
@@ -309,7 +283,7 @@ function setupSection6Sensor() {
       if (scrollIndicator) {
         gsap.to(scrollIndicator, { 
           opacity: 0, 
-          duration: 0.5 
+          duration: 0.3 
         });
       }
     }
@@ -329,7 +303,7 @@ function setupSection6Animation() {
     section6.querySelector(".copyright")
   ].filter(el => el);
   
-  gsap.set(elements, { opacity: 0, y: 50 });
+  gsap.set(elements, { opacity: 0, y: 30 });
   
   gsap.timeline({
     scrollTrigger: {
@@ -341,179 +315,200 @@ function setupSection6Animation() {
   .to(elements, { 
     opacity: 1, 
     y: 0, 
-    duration: 0.5, 
-    stagger: 0.2, 
+    duration: 0.4, 
+    stagger: 0.1, 
     ease: "power2.out" 
   });
 }
 
-// 오렌지 서클 존재 확인 및 필요시 생성
-function ensureOrangeCircleExists() {
-  let orangeCircle = document.querySelector(".orange-circle");
-  
-  // 오렌지 서클이 없으면 생성
+// 오렌지 서클 애니메이션 설정 - 더 작은 크기로 수정
+function setupOrangeCircleAnimation() {
+  const orangeCircle = document.getElementById('orange-circle-background');
   if (!orangeCircle) {
-    orangeCircle = document.createElement("div");
-    orangeCircle.className = "orange-circle";
-    document.body.appendChild(orangeCircle);
-    console.log("Orange circle created dynamically");
+    console.error("오렌지 서클 요소를 찾을 수 없습니다.");
+    return;
   }
   
-  return orangeCircle;
-}
-
-// 오렌지 원 애니메이션 설정
-function setupOrangeCircleAnimation() {
-  // 오렌지 서클 확인 및 필요시 생성
-  const orangeCircle = ensureOrangeCircleExists();
-  if (!orangeCircle) return;
-  
-  // 초기 상태 설정
+  // 초기 상태 설정 - 더 작은 크기로 설정
   gsap.set(orangeCircle, {
     opacity: 0,
-    scale: 2,
-    filter: "blur(100px)"
+    scale: 0,
+    filter: "blur(30px)"
   });
   
-  // 섹션 4에서 섹션 5로 전환될 때 오렌지 원 애니메이션
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: "#section4",
-      start: "top 50%",
-      end: "bottom top",
-      scrub: true,
-      onEnter: () => {
-        // 섹션 4에 진입할 때 오렌지 원 표시 시작
-        gsap.to(orangeCircle, {
-          opacity: 0.5,
-          scale: 2,
-          filter: "blur(100px)",
-          duration: 0.5
-        });
-      }
-    }
-  })
-  .to(orangeCircle, {
-    opacity: 1,
-    scale: 2,
-    filter: "blur(100px)",
-    ease: "power2.out"
-  });
+  // 오렌지 서클 스타일 직접 수정 - 더 작게
+  orangeCircle.style.width = "7vh"; 
+  orangeCircle.style.height = "7vh"; 
   
-  // 섹션 5에서 스크롤에 따라 오렌지 원 애니메이션
-  const section5Timeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#section5",
-      start: "top top", // 섹션 5가 화면 상단에 닿을 때 시작
-      end: "bottom bottom", // 섹션 5 끝까지 스크롤 완료 시 끝
-      scrub: 0.5, // 스크롤에 약간 지연되게 따라오도록 설정
-      pin: false, // 섹션 자체는 고정하지 않음
-      onEnter: () => {
-        // 섹션 5에 진입할 때 오렌지 원이 완전히 보이도록 설정
-        gsap.to(orangeCircle, {
-          opacity: 1,
-          scale: 2,
-          filter: "blur(100px)",
-          duration: 0.2,
-          ease: "power1.out"
-        });
-      }
+  // 섹션 4에서 섹션 5로 전환될 때 오렌지 서클 애니메이션
+  ScrollTrigger.create({
+    trigger: "#section5",
+    start: "top bottom", // 섹션 5가 화면 하단에 보이기 시작할 때
+    end: "top top",      // 섹션 5가 화면 상단에 도달할 때
+    onEnter: () => {
+      console.log("섹션 5 진입 - 오렌지 서클 나타남");
+      gsap.to(orangeCircle, {
+        opacity: 1, 
+        scale: 1, 
+        filter: "blur(30px)",
+        duration: 0.8,
+        ease: "power2.out"
+      });
+    },
+    onLeaveBack: () => {
+      console.log("섹션 5에서 위로 이탈 - 오렌지 서클 사라짐");
+      gsap.to(orangeCircle, {
+        opacity: 0,
+        scale: 0,
+        duration: 0.5,
+        ease: "power2.in"
+      });
     }
   });
   
-  // 스크롤에 따른 오렌지 원 애니메이션 (변화 과정)
-  section5Timeline.to(orangeCircle, {
-    scale: 0.3, // 작은 크기로 축소
-    filter: "blur(5px)", // 선명해짐
-    opacity: 0.9, // 약간 더 불투명하게
-    ease: "power1.inOut"
+  // 섹션 5 내부에서 스크롤할 때 오렌지 서클 변화
+  ScrollTrigger.create({
+    trigger: "#section5",
+    start: "top top",      // 섹션 5가 화면 상단에 도달했을 때
+    end: "bottom 70%",     // 섹션 5의 70% 지점에서 종료 - 더 빨리 사라지게 수정
+    scrub: 0.5,            // 부드러운 스크롤 효과
+    onUpdate: (self) => {
+      // 스크롤 진행도에 따라 오렌지 서클 블러와 투명도 조절
+      const progress = self.progress;
+      const targetBlur = Math.max(5, 15 - progress * 10); // 블러 감소
+      const targetOpacity = Math.max(0, 0.75 - progress * 1.5); // 더 빠르게 투명해지도록 수정
+      
+      gsap.to(orangeCircle, {
+        filter: `blur(${targetBlur}px)`,
+        opacity: targetOpacity,
+        scale: Math.max(0.4, 0.9 - progress * 0.5), // 스크롤에 따라 점점 작아지게
+        duration: 0.1,
+        ease: "none"
+      });
+    }
   });
   
-  // 포트폴리오 아이템 호버 효과 설정
+  // 섹션 5 하단부에 도달하기 전에 완전히 페이드 아웃
+  ScrollTrigger.create({
+    trigger: "#section5",
+    start: "70% center", // 섹션 5의 70% 지점부터 시작
+    end: "bottom bottom", // 섹션 5 끝까지
+    onEnter: () => {
+      console.log("섹션 5 하단부 진입 - 오렌지 서클 완전 페이드 아웃");
+      gsap.to(orangeCircle, {
+        opacity: 0,
+        scale: 0.3,
+        duration: 0.5,
+        ease: "power2.in"
+      });
+    },
+    onLeaveBack: () => {
+      console.log("섹션 5 하단부에서 위로 이탈 - 오렌지 서클 복원");
+      const progress = calculateScrollProgress(document.querySelector("#section5"));
+      const targetOpacity = Math.max(0, 0.75 - progress * 1.5);
+      
+      gsap.to(orangeCircle, {
+        opacity: targetOpacity,
+        scale: Math.max(0.4, 0.9 - progress * 0.5),
+        duration: 0.5,
+        ease: "power2.out"
+      });
+    }
+  });
+  
+  // 포트폴리오 아이템 호버 효과
+  setupPortfolioHoverEffects(orangeCircle);
+}
+
+// 포트폴리오 아이템 호버 이벤트 설정 - 호버 시 서클이 작아지면서 선명해지도록 수정
+function setupPortfolioHoverEffects() {
   const portfolioItems = document.querySelectorAll('.portfolio-item');
+  const orangeCircle = document.getElementById('orange-circle-background');
+  
+  if (!portfolioItems.length) return;
   
   portfolioItems.forEach(item => {
-    item.addEventListener('mouseenter', () => {
-      // 호버 시 오렌지 원 효과 증가
-      gsap.to(orangeCircle, {
-        duration: 0.4,
-        opacity: 1,
-        scale: 0.4, // 약간 커짐
-        filter: "blur(2px)", // 더 선명해짐
-        ease: "power2.out"
+    const img = item.querySelector('.portfolio-image img');
+    
+    if (img) {
+      // 초기 상태 설정
+      gsap.set(img, { scale: 1 });
+      
+      // 마우스 진입 이벤트
+      item.addEventListener('mouseenter', () => {
+        if (isScrolling) return; // 스크롤 중일 땐 호버 효과 무시
+        
+        // 이미지 확대 효과
+        gsap.to(img, {
+          scale: 1.05,
+          duration: 0.6,
+          ease: "power2.out"
+        });
+        
+        // 오렌지 서클 효과 - 더 작고 더 선명하게 수정
+        if (orangeCircle) {
+          gsap.to(orangeCircle, {
+            filter: "blur(5px)", // 더 선명하게
+            opacity: 1,        // 더 진하게
+            scale: 0.18,          // 더 작게 (커지는 대신 작아지게 변경)
+            duration: 0.4,
+            ease: "power2.out"
+          });
+        }
       });
-    });
-    
-    item.addEventListener('mouseleave', () => {
-      // 호버 해제 시 원래 상태로 복귀 (현재 스크롤 위치에 따라 다름)
-      const section5 = document.querySelector("#section5");
-      const scrollProgress = calculateScrollProgress(section5);
       
-      // 스크롤 위치에 따른 적절한 크기와 블러 계산
-      const targetScale = 2 - (scrollProgress * 1.7); // 2에서 0.3까지
-      const targetBlur = 100 - (scrollProgress * 95); // 100px에서 5px까지
-      
-      gsap.to(orangeCircle, {
-        duration: 0.4,
-        opacity: 0.7 + (scrollProgress * 0.2),
-        scale: Math.max(0.3, targetScale),
-        filter: `blur(${Math.max(5, targetBlur)}px)`,
-        ease: "power2.out"
-      });
-    });
-  });
-  
-  // 스크롤 진행도 계산 함수 (0~1 값)
-  function calculateScrollProgress(section) {
-    if (!section) return 0;
-    
-    const rect = section.getBoundingClientRect();
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const sectionTop = rect.top + scrollTop;
-    const sectionHeight = section.offsetHeight;
-    const windowHeight = window.innerHeight;
-    
-    // 뷰포트에서의 위치 계산
-    const scrollPosition = scrollTop + windowHeight - sectionTop;
-    const progress = Math.min(Math.max(scrollPosition / sectionHeight, 0), 1);
-    
-    return progress;
-  }
-  
-  // 스크롤 이벤트 리스너 - 호버 해제 상태에서 스크롤 위치에 따른 애니메이션 조정
-  window.addEventListener('scroll', () => {
-    const section5 = document.querySelector("#section5");
-    // 섹션 5가 보이는 상태이고, 현재 호버 중이 아닌 경우에만 업데이트
-    if (isSectionVisible(section5) && !document.querySelector('.portfolio-item:hover')) {
-      const scrollProgress = calculateScrollProgress(section5);
-      
-      // 현재 스크롤 위치에 따른 애니메이션 미세 조정 (부드러움 강화)
-      gsap.to(orangeCircle, {
-        duration: 0.1,
-        ease: "none",
-        opacity: 0.7 + (scrollProgress * 0.2),
-        scale: Math.max(0.3, 2 - (scrollProgress * 1.7)),
-        filter: `blur(${Math.max(5, 100 - (scrollProgress * 95))}px)`
+      // 마우스 이탈 이벤트
+      item.addEventListener('mouseleave', () => {
+        // 이미지 원래 크기로
+        gsap.to(img, {
+          scale: 1.2,
+          duration: 0.6,
+          ease: "power2.out"
+        });
+        
+        // 오렌지 서클 효과 원복
+        if (orangeCircle) {
+          const section5 = document.querySelector("#section5");
+          if (section5) {
+            const progress = calculateScrollProgress(section5);
+            const targetBlur = Math.max(5, 15 - progress * 10);
+            const targetOpacity = Math.max(0, 0.75 - progress * 1.5);
+            const targetScale = Math.max(0.4, 0.9 - progress * 0.5);
+            
+            gsap.to(orangeCircle, {
+              filter: `blur(${targetBlur}px)`,
+              opacity: targetOpacity,
+              scale: targetScale,
+              duration: 0.4,
+              ease: "power2.out"
+            });
+          }
+        }
       });
     }
   });
+}
+
+// 스크롤 진행도 계산 함수 (0~1 값)
+function calculateScrollProgress(section) {
+  if (!section) return 0;
   
-  // 섹션이 화면에 보이는지 확인
-  function isSectionVisible(section) {
-    if (!section) return false;
-    
-    const rect = section.getBoundingClientRect();
-    return (
-      rect.top <= window.innerHeight &&
-      rect.bottom >= 0
-    );
-  }
+  const rect = section.getBoundingClientRect();
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const sectionTop = rect.top + scrollTop;
+  const sectionHeight = section.offsetHeight;
+  const windowHeight = window.innerHeight;
+  
+  // 뷰포트에서의 위치 계산
+  const scrollPosition = scrollTop + windowHeight - sectionTop;
+  const progress = Math.min(Math.max(scrollPosition / (sectionHeight + windowHeight), 0), 1);
+  
+  return progress;
 }
 
 // 개선된 스크롤 스냅 설정
 function setupImprovedScrollSnap() {
-  // 스크롤 이벤트에 디바운스 적용
-  let lastScrollTime = 0;
+  // 스크롤 이벤트 디바운싱을 위한 타이머
   let scrollTimeout;
   
   // 모든 섹션 가져오기
@@ -526,19 +521,16 @@ function setupImprovedScrollSnap() {
   // 현재 활성 섹션 인덱스 추적
   let activeIndex = 0;
   
-  // 마지막 스크롤 방향 추적 (1: 아래로, -1: 위로)
-  let lastScrollDirection = 0;
-  
   // 초기 스크롤 위치 설정 (페이지 로드 시)
   setTimeout(() => {
     window.scrollTo(0, 0);
     activeIndex = 0;
   }, 100);
   
-  // 스크롤 핸들러
-  window.addEventListener('wheel', handleScroll);
+  // 스크롤 핸들러 등록
+  window.addEventListener('wheel', handleScroll, { passive: false });
   window.addEventListener('touchstart', handleTouchStart);
-  window.addEventListener('touchmove', handleTouchMove);
+  window.addEventListener('touchmove', handleTouchMove, { passive: false });
   
   let touchStartY = 0;
   
@@ -549,13 +541,10 @@ function setupImprovedScrollSnap() {
   
   // 터치 이동 이벤트 핸들러
   function handleTouchMove(event) {
-    if (isScrolling) return;
+    if (isScrolling || isAnimating) return;
     
     const touchY = event.touches[0].clientY;
     const diff = touchStartY - touchY;
-    
-    // 스크롤 방향 저장
-    lastScrollDirection = diff > 0 ? 1 : -1;
     
     // 현재 섹션이 스냅 비활성화 상태인지 확인
     if (activeIndex < sections.length && sections[activeIndex].getAttribute('data-snap') === 'false') {
@@ -569,13 +558,13 @@ function setupImprovedScrollSnap() {
       }
       
       // 섹션 5 상단에서 위로 스크롤할 때 섹션 4로 이동
-      if (diff < -50 && window.scrollY <= sections[activeIndex].offsetTop + 200) {
+      if (diff < -50 && window.scrollY <= sections[activeIndex].offsetTop + 100) {
         scrollToSection(activeIndex - 1);
         event.preventDefault();
         return;
       }
       
-      // 그렇지 않으면 기본 스크롤 동작 허용 (preventDefault 없음)
+      // 그렇지 않으면 기본 스크롤 동작 허용
       return;
     }
     
@@ -583,40 +572,34 @@ function setupImprovedScrollSnap() {
     if (Math.abs(diff) > 50) { // 최소한의 스와이프 거리
       if (diff > 0) {
         // 아래로 스와이프
-        scrollToSection(activeIndex + 1);
+        if (activeIndex < sectionCount - 1) {
+          scrollToSection(activeIndex + 1);
+          event.preventDefault();
+        }
       } else {
         // 위로 스와이프
-        scrollToSection(activeIndex - 1);
+        if (activeIndex > 0) {
+          scrollToSection(activeIndex - 1);
+          event.preventDefault();
+        }
       }
-      
-      // 이벤트 기본 동작 방지
-      event.preventDefault();
     }
   }
   
   // 스크롤 이벤트 핸들러
   function handleScroll(event) {
-    // 이미 스크롤 중이면 무시
-    if (isScrolling) return;
-    
-    // 스크롤 방향 저장
-    lastScrollDirection = event.deltaY > 0 ? 1 : -1;
-    
-    // 현재 시간과 마지막 스크롤 이벤트 사이의 간격
-    const now = new Date().getTime();
-    const delta = now - lastScrollTime;
-    
-    // 스크롤 이벤트 디바운싱 (너무 빠른 연속 스크롤 방지)
-    if (delta < 100) {
+    if (isScrolling || isAnimating) {
       event.preventDefault();
       return;
     }
+    
+    const direction = event.deltaY > 0 ? 1 : -1;
     
     // 현재 섹션이 스냅 비활성화 상태인지 확인
     if (activeIndex < sections.length && sections[activeIndex].getAttribute('data-snap') === 'false') {
       // 섹션 6 센서 영역 체크 (포트폴리오 섹션에서 섹션 6으로 넘어갈 때만)
       const sensor = document.querySelector('.section-snap-sensor');
-      if (sensor && isSensorVisible(sensor) && event.deltaY > 0) {
+      if (sensor && isSensorVisible(sensor) && direction > 0) {
         // 아래로 스크롤하고 센서가 보이면 섹션 6으로 이동
         scrollToSection(activeIndex + 1);
         event.preventDefault();
@@ -624,34 +607,29 @@ function setupImprovedScrollSnap() {
       }
       
       // 섹션 5 상단에서 위로 스크롤할 때 섹션 4로 이동
-      if (event.deltaY < 0 && window.scrollY <= sections[activeIndex].offsetTop + 200) {
+      if (direction < 0 && window.scrollY <= sections[activeIndex].offsetTop + 100) {
         scrollToSection(activeIndex - 1);
         event.preventDefault();
         return;
       }
       
-      // 그렇지 않으면 기본 스크롤 동작 허용 (preventDefault 없음)
+      // 그렇지 않으면 기본 스크롤 동작 허용
       return;
     }
     
-    // 스크롤 방향 감지 (스냅이 활성화된 일반 섹션)
-    const direction = event.deltaY > 0 ? 1 : -1;
-    
-    // 타이머 초기화
+    // 스크롤 디바운싱
     clearTimeout(scrollTimeout);
     
-    // 타이머 설정: 짧은 스크롤에도 반응
     scrollTimeout = setTimeout(() => {
-      // 다음/이전 섹션 인덱스 계산
-      const nextIndex = Math.min(Math.max(activeIndex + direction, 0), sectionCount - 1);
-      
-      // 현재 섹션과 다른 경우에만 스크롤
-      if (nextIndex !== activeIndex) {
-        scrollToSection(nextIndex);
+      // 일반 섹션에서의 스크롤
+      if (direction > 0 && activeIndex < sectionCount - 1) {
+        scrollToSection(activeIndex + 1);
+      } else if (direction < 0 && activeIndex > 0) {
+        scrollToSection(activeIndex - 1);
       }
     }, 50);
     
-    lastScrollTime = now;
+    event.preventDefault();
   }
   
   // 글로벌 스코프로 이동하여 다른 함수에서도 접근 가능하게 함
@@ -659,30 +637,36 @@ function setupImprovedScrollSnap() {
   
   // 특정 섹션으로 스크롤하는 함수
   function scrollToSection(index) {
-    if (index < 0 || index >= sectionCount || isScrolling) return;
+    if (index < 0 || index >= sectionCount || isScrolling || isAnimating) return;
     
-    // 스크롤 잠금 설정
+    // 스크롤 및 애니메이션 잠금 설정
     isScrolling = true;
+    isAnimating = true;
     
     // 활성 섹션 업데이트
     activeIndex = index;
     
-    // 스크롤 대상 위치
+    // 스크롤 타겟 위치
     const targetPosition = sectionPositions[index];
     
     // 스크롤 애니메이션
     gsap.to(window, {
-      duration: 0.5,  // 스크롤 애니메이션 시간을 0.5초로 설정 (더 빠름)
+      duration: 0.6,
       scrollTo: {
         y: targetPosition,
         autoKill: false
       },
       ease: "power2.inOut",
       onComplete: () => {
-        // 일정 시간 후 스크롤 잠금 해제
+        // 스크롤 잠금 해제 (약간의 지연)
         setTimeout(() => {
           isScrolling = false;
-        }, 200);  // 스크롤 잠금 해제 시간을 200ms로 설정 (더 빠름)
+          
+          // 애니메이션 잠금 해제 (추가 지연)
+          setTimeout(() => {
+            isAnimating = false;
+          }, 300);
+        }, 200);
       }
     });
   }
@@ -696,7 +680,7 @@ function setupImprovedScrollSnap() {
     );
   }
   
-  // URL 해시 변경 감지하여 해당 섹션으로 이동
+  // 해시 변경 감지 및 스크롤 처리
   window.addEventListener('hashchange', function() {
     const hash = window.location.hash;
     if (hash) {

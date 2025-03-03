@@ -529,6 +529,7 @@ h2 {
 .portfolio-image {
   flex: 1;
   max-width: 48%;
+  border-radius: 20px;
   height: 320px;
   overflow: hidden;
   position: relative;

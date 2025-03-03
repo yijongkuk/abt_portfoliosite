@@ -1,35 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ABT Portfolio Website</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap&family=Jost:ital,wght@0,100..900;1,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Noto+Serif+KR:wght@200..900&display=swap" 
-    rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GSAP Section Animation - Improved</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap&family=Jost:ital,wght@0,100..900;1,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Noto+Serif+KR:wght@200..900&display=swap"
+    rel="stylesheet" />
 </head>
+
 <body>
 
   <!-- 고정 로고 (왼쪽 상단) -->
   <div class="logo">
     <a href="#section1">
-      <img src="images/logo_w.png" alt="White Logo" class="logo-img white-logo">
-      <img src="images/logo_b.png" alt="Black Logo" class="logo-img black-logo">
+      <img src="images/logo_w.png" alt="White Logo" class="logo-img white-logo" />
+      <img src="images/logo_b.png" alt="Black Logo" class="logo-img black-logo" />
     </a>
   </div>
 
   <!-- 고정 컨택트 아이콘 (오른쪽 상단) -->
   <div class="contact">
-    <a href="#section7">
-      <img src="images/contact_w.png" alt="White Contact" class="contact-img white-contact">
-      <img src="images/contact_b.png" alt="Black Contact" class="contact-img black-contact">
+    <a href="#footer">
+      <img src="images/contact_w.png" alt="White Contact" class="contact-img white-contact" />
+      <img src="images/contact_b.png" alt="Black Contact" class="contact-img black-contact" />
     </a>
   </div>
 
-  <!-- 7개 섹션 -->
+  <!-- 스크롤 인디케이터 추가 -->
+  <div class="scroll-indicator">
+    <span class="scroll-arrow"></span>
+    <span class="scroll-text">Scroll</span>
+  </div>
+
   <!-- Section 1 -->
   <section id="section1" class="section split-section" data-theme="dark">
     <div class="split-container">
@@ -37,8 +44,13 @@
         <div class="left-content">
           <h4 class="circle-dot">●</h4>
           <h2 class="intro-title">Above Beyond Together</h2>
-          <p class="intro-desc-en">We combine emotion and data<br>to climb to greater heights together.</p>
-          <p class="intro-desc-kr">감성과 이성을 결합해, 우린 더 높은 곳으로 나아갑니다.</p>
+          <p class="intro-desc-en">
+            We combine emotion and data<br />
+            to climb to greater heights together.
+          </p>
+          <p class="intro-desc-kr">
+            감성과 이성을 결합해, 우린 더 높은 곳으로 나아갑니다.
+          </p>
         </div>
       </div>
       <div class="split-right">
@@ -57,13 +69,13 @@
           <h4 class="circle-dot">●</h4>
           <h2 class="intro-title">Your Uniqueness Becomes Your Brand</h2>
           <p class="intro-desc-en">
-            ABT is a collective of creators who turn your imagined brand identity into reality.<br>
-            With creativity and innovation at our core, we craft exceptional brand experiences<br>
+            ABT is a collective of creators who turn your imagined brand identity into reality.<br />
+            With creativity and innovation at our core, we craft exceptional brand experiences<br />
             to bring your vision to life.
           </p>
           <p class="intro-desc-kr">
-            당신의 유일함이 브랜드가 됩니다.<br>
-            ABT는 당신이 상상하는 브랜드 이미지를 현실로 구현시키는 크리에이티브 집단입니다.<br>
+            당신의 유일함이 브랜드가 됩니다.<br />
+            ABT는 당신이 상상하는 브랜드 이미지를 현실로 구현시키는 크리에이티브 집단입니다.<br />
             여러분의 비전을 실현하기 위해, 우리는 창의성과 혁신을 바탕으로 특별한 브랜드 경험을 제공합니다.
           </p>
         </div>
@@ -84,10 +96,14 @@
           <h4 class="circle-dot">●</h4>
           <h2 class="intro-title">Beyond Branding</h2>
           <p class="intro-desc-en">
-            With a team of experts from diverse fields,<br>We deliver measurable results that exceed expectations,<br>crafting a compelling brand story for your success.
+            With a team of experts from diverse fields,<br />
+            We deliver measurable results that exceed expectations,<br />
+            crafting a compelling brand story for your success.
           </p>
           <p class="intro-desc-kr">
-            각 분야 전문가로 구성된 브랜딩 팀으로,<br>당신의 기대를 뛰어넘는 결과를 수치화하며,<br>성공적인 브랜드 스토리를 만들어 가겠습니다.
+            각 분야 전문가로 구성된 브랜딩 팀으로,<br />
+            당신의 기대를 뛰어넘는 결과를 수치화하며,<br />
+            성공적인 브랜드 스토리를 만들어 가겠습니다.
           </p>
         </div>
       </div>
@@ -99,109 +115,267 @@
     </div>
   </section>
 
-  <!-- 오렌지 원 (Section5 카드 배경) -->
+  <!-- 오렌지 원 -->
   <div class="orange-circle"></div>
 
-  <!-- Section 4: 새 레이아웃 (배경 + 중앙 텍스트) -->
-  <section id="section4" class="section content2" data-theme="dark">
-    <div class="section4-inner">
-      <h2 class="section4-title">Ready to Make Your Brand a Unique Identity?</h2>
-      <p class="section4-subtitle">이곳에 원하는 한글 문구를 넣어주세요</p>
-      <p class="section4-credit">Event Garden, Ting</p>
+  <!-- Section 4: 가운데 배경 + 중앙 텍스트 + 오른쪽 하단 캡션 -->
+  <section id="section4" class="section center-section" data-theme="dark">
+
+    <!-- 중앙 정렬 콘텐츠 -->
+    <div class="center-content">
+      <h2 class="intro-title">Ready to Make Your Brand a Unique Identity?</h2>
+      <p class="intro-desc-kr">함께하면, 당신의 상상은 현실이 됩니다.</p>
+    </div>
+
+    <!-- 오른쪽 하단 캡션 -->
+    <div class="caption">
+      <p>Forest Garden, Ting</p>
     </div>
   </section>
 
-  <!-- Section 5: 카드(포트폴리오) -->
-  <section id="section5" class="content3" data-theme="light">
-    <div class="cards-container">
-      <div class="card">
-        <div class="card-image">
-          <img src="images/project_001.jpg" alt="Project 1">
+  <!-- Section 5: 포트폴리오 섹션 -->
+  <section id="section5" class="section portfolio-section" data-theme="light" data-snap="false">
+    <div class="portfolio-inner">
+
+      <div class="portfolio-list">
+        <!-- 포트폴리오 아이템 1 -->
+        <div class="portfolio-item">
+          <div class="portfolio-image">
+            <img src="images/project_001.jpg" alt="Bellsn" />
+          </div>
+          <div class="portfolio-content">
+            <h3>Bellsn</h3>
+            <p class="portfolio-desc-en">
+              Graceful design pleases the eye, but thoughtful design touches the soul. Our robust creations offer a way
+              of life that seeks purposeful beauty.
+            </p>
+            <p class="portfolio-desc-kr">
+              유려한 디자인은 사용자의 눈을 즐겁게 합니다. 그러나, 내부까지 고려한 디자인은 사용자의 삶에 다가갑니다. 우리의 견고한 디자인은 유용한 아름다움을 찾는 삶에 한 나의 방식이 될 것입니다.
+            </p>
+            <div class="portfolio-circle"></div>
+          </div>
         </div>
-        <div class="card-content">
-          <h2>Bellsn</h2>
-          <p class="card-desc-en">
-            Graceful design pleases the eye, but thoughtful design touches the soul.
-            Our robust creations offer a way of life that seeks purposeful beauty.
-          </p>
-          <p class="card-desc-kr">
-            유려한 디자인은 사용자의 눈을 즐겁게 합니다.<br>
-            그러나, 내부까지 고려한 디자인은 사용자의 삶에 다가갑니다.<br>
-            우리의 견고한 디자인은 유용한 아름다움을 찾는 삶에 하나의 방식이 될 것입니다.
-          </p>
+
+        <!-- 포트폴리오 아이템 2 -->
+        <div class="portfolio-item">
+          <div class="portfolio-image">
+            <img src="images/project_002.jpg" alt="Analogram" />
+          </div>
+          <div class="portfolio-content">
+            <h3>Analogram</h3>
+            <p class="portfolio-desc-en">
+              The name is a combination of ‘analog’ and ‘RAM,’ meaning ‘analog memory device.’<br>
+              We hope that the objects carrying our perspectives and thoughts will reach you with new meaning.
+
+            </p>
+            <p class="portfolio-desc-kr">
+              ‘analog’와 ‘ram’의 합성어로 ‘아날로그 기억장치’라는 의미를 가진 이름입니다.<br>
+              우리의 시선과 생각이 담긴 대상이 새로운 의미로서 당신에게 전달되기를 바랍니다.
+            </p>
+            <div class="portfolio-circle"></div>
+          </div>
+        </div>
+
+        <!-- 포트폴리오 아이템 3 -->
+
+
+        <div class="portfolio-item">
+          <div class="portfolio-image">
+            <img src="images/project_003.jpg" alt="TinsMerry" />
+          </div>
+          <div class="portfolio-content">
+            <h3>TinsMerry</h3>
+            <p class="portfolio-desc-en">
+              All TinsMerry products are designed based on items from the adventure story.
+            </p>
+            <p class="portfolio-desc-kr">
+              ‘TinsMerry’의 모든 제품은 모험이야기에 나오는 아이템을 기반으로 제작되었습니다.
+            </p>
+            <div class="portfolio-circle"></div>
+          </div>
+        </div>
+
+        <!-- 포트폴리오 아이템 4 -->
+        <div class="portfolio-item">
+          <div class="portfolio-image">
+            <img src="images/project_007.jpg" alt="Gentle Monster" />
+          </div>
+          <div class="portfolio-content">
+            <h3>Gentle Monster</h3>
+            <p class="portfolio-desc-en">
+              Redefining luxury eyewear through bold design and artistic expression.
+            </p>
+            <p class="portfolio-desc-kr">
+              대담한 디자인과 예술적 표현을 통해 럭셔리 아이웨어를 재정의합니다.
+            </p>
+            <div class="portfolio-circle"></div>
+          </div>
+        </div>
+
+        <!-- 포트폴리오 아이템 5 -->
+        <div class="portfolio-item">
+          <div class="portfolio-image">
+            <img src="images/project_006.jpg" alt="Meal Do" />
+          </div>
+          <div class="portfolio-content">
+            <h3>Meal Do - Ikseondong</h3>
+            <p class="portfolio-desc-en">
+              Blending traditional Korean aesthetics with modern dining experiences in the heart of Ikseondong.
+            </p>
+            <p class="portfolio-desc-kr">
+              익선동의 중심에서 전통적인 한국의 미학과 현대적인 식사 경험을 결합합니다.
+            </p>
+            <div class="portfolio-circle"></div>
+          </div>
+        </div>
+
+        <!-- 포트폴리오 아이템 6 -->
+        <div class="portfolio-item">
+          <div class="portfolio-image">
+            <img src="images/project_004.jpg" alt="Chanel" />
+          </div>
+          <div class="portfolio-content">
+            <h3>Chanel</h3>
+            <p class="portfolio-desc-en">
+              The entire space is designed to reflect the brand’s philosophy of promoting natural and confident male
+              beauty.
+            </p>
+            <p class="portfolio-desc-kr">
+              자연스럽고 자신감 있는 남성 뷰티를 제안하는 브랜드 철학을 공간 전체에서 느낄 수 있도록 구성하였습니다.
+            </p>
+            <div class="portfolio-circle"></div>
+          </div>
+        </div>
+
+        <!-- 포트폴리오 아이템 7 -->
+        <div class="portfolio-item">
+          <div class="portfolio-image">
+            <img src="images/project_008.jpg" alt="Etc Projects" />
+          </div>
+          <div class="portfolio-content">
+            <h3>Etc Projects</h3>
+            <p class="portfolio-desc-en">
+              ABT is a creative collective that turns imagination into reality.<br>
+              To bring your vision to life,<br>
+              we offer exceptional brand development experiences driven by creativity
+            </p>
+            <p class="portfolio-desc-kr">
+              ABT는 여러분이 상상하는 이미지를 현실로 만드는 크리에이티브 집단입니다.<br>
+              여러분의 비전을 실현하기 위해, 우리는 창의성과 혁신을 바탕으로 탁월한 브랜드 전개 경험을 제공합니다.
+            </p>
+            <div class="portfolio-circle"></div>
+          </div>
         </div>
       </div>
-      <!-- 추가 카드들 (HTML 그대로 유지) -->
-      <div class="card">
-        <div class="card-image">
-          <img src="images/project_002.jpg" alt="Project 2">
+    </div>
+
+    <!-- 섹션 6 스냅을 위한 센서 영역 -->
+    <div class="section-snap-sensor" data-target="section6"></div>
+  </section>
+
+
+  <!-- HTML 문서에 오렌지 서클이 없는 경우 이 코드를 추가하세요 -->
+  <!-- 오렌지 원 - body 태그 안에 추가 (section5 바로 앞에) -->
+  <div class="orange-circle"></div>
+
+  <!-- Section 6: 컨택트 섹션 -->
+  <section id="section6" class="section contact-section" data-theme="dark">
+    <div class="contact-inner">
+      <h2 class="contact-title">Contact</h2>
+
+      <!-- 컨택트 정보 영역 -->
+      <div class="contact-info">
+        <div class="info-row">
+          <div class="info-label">Address</div>
+          <div class="info-value">508-509, Shin-woo-sil Ro 100, Gyeong-gi Do, Republic of Korea</div>
         </div>
-        <div class="card-content">
-          <h2>Analogram</h2>
-          <p class="card-desc-en">Description for project 2. This is a brief overview of the project.</p>
+        <div class="info-row">
+          <div class="info-label">TEL</div>
+          <div class="info-value">+82 02-472-8245</div>
         </div>
-      </div>
-      <div class="card">
-        <div class="card-image"> 
-          <img src="images/project_003.jpg" alt="Project 3">
+        <div class="info-row">
+          <div class="info-label">Mobile</div>
+          <div class="info-value">+82 10-6274-1626</div>
         </div>
-        <div class="card-content">
-          <h2>Tinsmerry</h2>
-          <p class="card-desc-en">Description for project 3. This is a brief overview of the project.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <img src="images/project_004.jpg" alt="Project 3">
-        </div>
-        <div class="card-content">
-          <h2>Tinsmerry</h2>
-          <p class="card-desc-en">Description for project 3. This is a brief overview of the project.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <img src="images/project_005.jpg" alt="Project 3">
-        </div>
-        <div class="card-content">
-          <h2>Tinsmerry</h2>
-          <p class="card-desc-en">Description for project 3. This is a brief overview of the project.</p>
+        <div class="info-row">
+          <div class="info-label">E-mail</div>
+          <div class="info-value">yun@toabt.com</div>
         </div>
       </div>
-      <div class="card">
-        <div class="card-image">
-          <img src="images/project_006.jpg" alt="Project 3">
+
+      <!-- 팀 멤버 영역 -->
+      <h2 class="member-title">Member</h2>
+
+      <div class="team-container">
+        <!-- 창의 디렉터 팀 -->
+        <div class="team-group">
+          <h3 class="team-title">Creative Director</h3>
+          <div class="team-members">
+            <div class="member">Heo Yun</div>
+          </div>
         </div>
-        <div class="card-content">
-          <h2>Tinsmerry</h2>
-          <p class="card-desc-en">Description for project 3. This is a brief overview of the project.</p>
+
+        <!-- 비주얼 디렉팅 팀 -->
+        <div class="team-group">
+          <h3 class="team-title">Visual Directing Team</h3>
+          <div class="team-members">
+            <div class="member">Jang Ji-Sung</div>
+            <div class="member">Kang Su-Ji</div>
+            <div class="member">Park Hyun-Su</div>
+          </div>
+        </div>
+
+        <!-- BX/BI 팀 -->
+        <div class="team-group">
+          <h3 class="team-title">BX / BI Team</h3>
+          <div class="team-members">
+            <div class="member">Yi Jong-Kuk</div>
+            <div class="member">Jang Young-Bin</div>
+          </div>
+        </div>
+
+        <!-- 포토&필름 팀 -->
+        <div class="team-group">
+          <h3 class="team-title">Photo & Film Team</h3>
+          <div class="team-members">
+            <div class="member">Kim Hee-Yun</div>
+            <div class="member">Kang Dong-Oh</div>
+          </div>
+        </div>
+
+        <!-- 스페셜 게스트 팀 -->
+        <div class="team-group">
+          <h3 class="team-title">+ Special Guest</h3>
+          <div class="team-members">
+            <div class="member">Casting</div>
+          </div>
         </div>
       </div>
-      <div class="card">
-        <div class="card-image">
-          <img src="images/project_007.jpg" alt="Project 3">
-        </div>
-        <div class="card-content">
-          <h2>Tinsmerry</h2>
-          <p class="card-desc-en">Description for project 3. This is a brief overview of the project.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <img src="images/project_008.jpg" alt="Project 3">
-        </div>
-        <div class="card-content">
-          <h2>Tinsmerry</h2>
-          <p class="card-desc-en">Description for project 3. This is a brief overview of the project.</p>
-        </div>
+
+      <!-- 저작권 정보 -->
+      <div class="copyright">
+        <p>© 2025 ABT All Rights Reserved.</p>
       </div>
     </div>
   </section>
 
-  <!-- Section 6 -->
-  <section id="section6" class="section" data-theme="dark"></section>
-  <!-- Section 7 -->
-  <section id="section7" class="section" data-theme="dark"></section>
+  <!-- 푸터 -->
+  <footer class="footer" id="footer">
+    <div class="footer-left">
+      <h2>abt</h2>
+      <p>ABT</p>
+      <p>© 2025 ABT All rights reserved.</p>
+    </div>
+    <div class="footer-right">
+      <p>Owner : ABT (ABOVIEW)</p>
+      <p>Business License : 336-31-01479</p>
+      <p>Website : toabt.com</p>
+      <p>Tel : +82 02-472-8245</p>
+      <p>Mobile : +82 10-6274-1626</p>
+      <p>Adress : 508-509, Shin-woo-sil Ro 100, Gyeong-gi Do, Republic of Korea</p>
+      <p>Email : yun@toabt.com</p>
+    </div>
+  </footer>
 
   <!-- GSAP 라이브러리 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -209,4 +383,5 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
   <script src="script.js"></script>
 </body>
+
 </html>

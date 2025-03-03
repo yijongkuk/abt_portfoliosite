@@ -6,7 +6,8 @@ html {
   overflow-x: hidden;
   font-family: "Lora";
   font-weight: 600;
-  color: #fffffa;
+  color: #fffffdee;
+  scroll-behavior: smooth;
 }
 
 h1 {
@@ -28,6 +29,7 @@ h2 {
   background-position: center;
   background-repeat: no-repeat;
 }
+
 .section::before {
   content: "";
   position: absolute;
@@ -46,6 +48,7 @@ h2 {
   left: 30px;
   z-index: 1000;
 }
+
 .logo-img {
   width: 90px;
   height: auto;
@@ -55,12 +58,14 @@ h2 {
   transition: opacity 0.5s ease;
   cursor: pointer;
 }
+
 .contact {
   position: fixed;
   top: 30px;
   right: 30px;
   z-index: 1000;
 }
+
 .contact-img {
   width: 80px;
   height: auto;
@@ -69,6 +74,59 @@ h2 {
   right: 0;
   transition: opacity 0.5s ease;
   cursor: pointer;
+}
+
+/* 스크롤 인디케이터 */
+.scroll-indicator {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.scroll-arrow {
+  width: 18px;
+  height: 18px;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  transform: rotate(45deg);
+  animation: arrowBounce 2s infinite;
+  margin-bottom: 5px;
+}
+
+.scroll-text {
+  color: #fffffd;
+  font-size: 9px;
+  font-family: "noto sans kr";
+  font-weight: 200;
+  ;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+@keyframes arrowBounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0) rotate(45deg);
+  }
+
+  40% {
+    transform: translateY(-10px) rotate(45deg);
+  }
+
+  60% {
+    transform: translateY(-5px) rotate(45deg);
+  }
 }
 
 /* 배경 이미지 래퍼 */
@@ -81,6 +139,7 @@ h2 {
   overflow: hidden;
   z-index: -1;
 }
+
 .background-image {
   width: 100%;
   height: 100%;
@@ -95,6 +154,7 @@ h2 {
   width: 100%;
   height: 100%;
 }
+
 .split-left {
   flex: 1;
   min-width: 0;
@@ -105,15 +165,19 @@ h2 {
   padding: 30px;
   box-sizing: border-box;
   background: transparent;
+  z-index: 1;
 }
+
 .split-left.top {
   align-items: flex-start;
   margin-top: 100px;
 }
+
 .split-left.bottom {
   align-items: flex-end;
   margin-bottom: 50px;
 }
+
 .split-right {
   flex: 1;
   min-width: 0;
@@ -124,31 +188,73 @@ h2 {
   align-items: flex-end;
   padding: 2rem;
   box-sizing: border-box;
+  z-index: 1;
 }
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* 수직 중앙 정렬 */
+  align-items: center;
+  /* 수평 중앙 정렬 */
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  z-index: 1;
+  position: relative;
+}
+
 .caption {
   margin-top: auto;
   font-size: 0.9rem;
   font-weight: 300;
 }
+
 .circle-dot {
   font-size: 1rem;
   margin-bottom: 0.5rem;
 }
+
 .intro-title {
   font-size: 1.6rem;
   font-weight: 500;
-  margin-bottom: 1rem;
 }
+
 .intro-desc-en {
   font-weight: 100;
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
 }
+
 .intro-desc-kr {
   font-family: "Noto Sans KR";
   font-weight: 100;
   font-size: 0.8rem;
-  color: #eeeeeeee;
+  color: #fffffdee;
+}
+
+/* CTA 버튼 스타일 */
+.cta-button {
+  margin-top: 30px;
+}
+
+.cta-button a {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: rgba(255, 136, 0, 0.85);
+  color: #fffffd;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.cta-button a:hover {
+  background-color: rgba(255, 136, 0, 1);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* 반응형 */
@@ -156,18 +262,21 @@ h2 {
   .split-container {
     flex-direction: column;
   }
+
   .split-left,
   .split-right {
     width: 100%;
     padding: 2rem;
     align-items: flex-start;
   }
+
   .split-left {
     align-items: flex-end !important;
     padding-bottom: 2rem;
     margin-top: 3rem;
     flex: 1.9;
   }
+
   .split-right {
     align-items: flex-end !important;
     padding-bottom: 2rem;
@@ -176,83 +285,135 @@ h2 {
     flex: 0.1;
     margin-top: 0;
   }
+
   .caption {
-    margin-top: 1rem; 
+    margin-top: 1rem;
   }
+
   .intro-title {
     font-size: 1.5rem;
   }
+
   .intro-desc-en {
     font-size: 0.85rem;
   }
+
   .intro-desc-kr {
     font-size: 0.75rem;
   }
+
   .logo-img {
     width: 90px;
   }
+
   .contact-img {
     width: 80px;
+  }
+
+  .cards-container {
+    padding: 0 20px;
+  }
+
+  .card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: auto;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1200px) {
+
   .split-left,
   .split-right {
     padding: 2rem;
   }
+
   .intro-title {
     font-size: 1.8rem;
   }
+
   .intro-desc-en {
     font-size: 0.95rem;
   }
+
   .intro-desc-kr {
     font-size: 0.85rem;
   }
+
   .logo-img {
     width: 100px;
   }
+
   .contact-img {
     width: 80px;
   }
 }
 
 @media (min-width: 1200px) {
+
   .split-left,
   .split-right {
     padding: 3rem;
   }
+
   .intro-title {
     font-size: 2rem;
   }
+
   .intro-desc-en {
     font-size: 1rem;
   }
+
   .intro-desc-kr {
     font-size: 0.9rem;
   }
+
   .logo-img {
-    width: 120px;
+    width: 110px;
   }
+
   .contact-img {
     width: 100px;
   }
 }
 
 /* 예시 배경 이미지 */
-#section1 { background-image: url('images/intro.jpg'); }
-#section2 { background-image: url('images/section_01.jpg'); }
-#section3 { background-image: url('images/section_02.jpg'); }
-#section4 { background-image: url('images/section_03.jpg'); }
-#section6 { background-image: url('images/outro.jpg'); }
-#section7 { background-color: #363636; }
+#section1 {
+  background-image: url('images/intro.jpg');
+}
 
-.white-logo, .white-contact {
+#section2 {
+  background-image: url('images/section_01.jpg');
+}
+
+#section3 {
+  background-image: url('images/section_02.jpg');
+}
+
+#section4 {
+  background-image: url('images/section_03.jpg');
+}
+
+#section6 {
+  background-image: url('images/outro.jpg');
+}
+
+#section7 {
+  background-color: #363636;
+}
+
+.white-logo,
+.white-contact {
   opacity: 1;
   pointer-events: auto;
 }
-.black-logo, .black-contact {
+
+.black-logo,
+.black-contact {
   opacity: 0;
   pointer-events: none;
 }
@@ -260,121 +421,670 @@ h2 {
 /* 다크/라이트 테마 */
 .section[data-theme="dark"] {
   background-color: #333333;
-  color: #ffffff;
+  color: #fffffd;
 }
+
 .section[data-theme="light"] {
-  background-color: #eeeeee;
+  background-color: #fffffd;
   color: #333333;
 }
 
-/* ---- Section 4 (새 레이아웃) ---- */
-.section4 {
-  background-image: url('images/section_03.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+/* 섹션 4의 캡션 위치 조정 */
+#section4 {
   position: relative;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  z-index: 1;
-}
-.section4-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* 수직 중앙 정렬 */
-  align-items: center;     /* 수평 중앙 정렬 */
-  text-align: center;
-}
-.section4-title {
-  font-size: 2rem;
-  color: #fff;
-  margin-bottom: 1rem;
-  opacity: 0;
-}
-.section4-subtitle {
-  font-size: 1.2rem;
-  color: #fff;
-  margin-bottom: 2rem;
-  opacity: 0;
-}
-.section4-credit {
-  font-size: 1rem;
-  color: #ddd;
-  opacity: 0;
 }
 
-/* 오렌지 원 (Section5 카드 배경) */
+#section4 .center-content {
+  flex: 1;
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#section4 .caption {
+  position: relative;
+  bottom: auto;
+  right: auto;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  align-self: flex-end;
+  font-size: 0.9rem;
+  color: #fffffd;
+}
+
+/* 모바일 대응 - 섹션 4 캡션을 다른 섹션과 동일하게 맞춤 */
+@media (max-width: 767px) {
+  #section4 .caption {
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+}
+
+/* 타이틀 스타일 */
+.center-content .title {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+/* 디스크립션 스타일 */
+.center-content .desc-kr {
+  font-size: 0.8rem;
+  font-weight: 100;
+}
+
+/* 오른쪽 하단 캡션 */
+#section4 .caption {
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
+  font-size: 0.9rem;
+  color: #fffffd;
+}
+
+/* Section5 포트폴리오 스타일 - 썸네일 모두 왼쪽으로 통일 */
+#section5 {
+  background-color: #fffffd;
+  position: relative;
+  padding: 100px 0 150px;
+  z-index: 2;
+  overflow-y: auto;
+  height: auto;
+  min-height: 100vh;
+}
+
+/* 섹션 5에서는 배경 필터 제거 */
+#section5::before {
+  background: rgba(0, 0, 0, 0);
+  /* 완전 투명 */
+  /* 또는 아예 content 속성을 비워서 ::before 요소를 없앨 수도 있습니다 */
+  content: none;
+}
+
+/* 포트폴리오 내부 컨테이너 조정 */
+.portfolio-inner {
+  max-width: 1200px;
+  /* 전체 컨테이너 너비 */
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 3rem;
+  /* 좌우 패딩 동일하게 */
+  color: #333;
+  box-sizing: border-box;
+  /* 패딩을 너비에 포함 */
+}
+
+/* 포트폴리오 리스트 레이아웃 - 세로 스택 */
+.portfolio-list {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+  margin-top: 50px;
+}
+
+/* 포트폴리오 아이템 - 이미지 항상 왼쪽 */
+.portfolio-item {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  position: relative;
+  background-color: transparent;
+  padding: 20px 0;
+  width: 100%;
+  /* 전체 너비 사용 */
+  max-width: 100%;
+  /* 최대 너비 제한 해제 */
+}
+
+.portfolio-image {
+  flex: 1;
+  max-width: 48%;
+  height: 320px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease, filter 0.6s ease; /* 자연스러운 전환을 위한 긴 지속 시간 */
+}
+
+/* 포트폴리오 아이템 호버 효과 - 부드러운 확대 및 밝기 증가 */
+.portfolio-item:hover .portfolio-image img {
+  transform: scale(1.05); /* 5% 확대 */
+  filter: brightness(1.05); /* 밝기 5% 증가 */
+}
+
+/* 오렌지 서클 스타일 */
 .orange-circle {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 7vw;
-  height: 7vw;
+  width: 100vw;
+  height: 100vw;
   background-color: rgba(255, 136, 0, 0.85);
   border-radius: 50%;
-  transform: translate(-50%, -50%) scale(1.2);
+  transform: translate(-50%, -50%);
   z-index: -1;
   opacity: 0;
-  filter: blur(200px);
+  filter: blur(100px);
   transition: 0.5s ease;
+  pointer-events: none; /* 클릭 이벤트 무시 */
 }
 
-/* Section5 */
-#section5 {
-  background-color: transparent;
+/* 포트폴리오 컨텐츠 영역 */
+.portfolio-content {
+  flex: 1;
+  /* 비율 기반 */
+  max-width: 48%;
+  /* 전체 너비의 약 절반 */
   position: relative;
-  padding: 100px 50px 100px 120px;
-  z-index: 2;
+  padding: 20px;
 }
-.cards-container {
+
+.portfolio-content h3 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+  color: #444;
+}
+
+.portfolio-desc-en {
+  font-family: "Lora";
+  font-weight: 400;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  color: #444;
+  line-height: 1.4;
+}
+
+.portfolio-desc-kr {
+  font-family: "Noto Sans KR";
+  font-weight: 300;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  color: #888;
+  line-height: 1.5;
+}
+
+/* 오렌지 서클 효과 - 섹션 5에 고정된 배경 */
+.orange-circle {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vw;
+  background-color: rgba(255, 136, 0, 0.85);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  opacity: 0;
+  filter: blur(100px);
+  transition: 0.5s ease;
+  pointer-events: none; /* 클릭 이벤트 무시 */
+}
+
+/* 포트폴리오 개별 아이템의 작은 서클 제거 */
+.portfolio-circle {
+  display: none; /* 기존의 작은 서클은 숨김 처리 */
+}
+
+/* 스크롤에 상관없이 오렌지 서클이 항상 화면 중앙에 고정 */
+.portfolio-section .orange-circle {
+  position: fixed; /* 스크롤해도 화면에 고정 */
+  top: 50%;
+  left: 50%;
+  z-index: -1; /* 컨텐츠 뒤에 위치 */
+}
+
+.portfolio-item:hover{
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+/* 섹션 5 모바일 가운데 정렬 수정 */
+@media (max-width: 767px) {
+  .portfolio-item {
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    /* 중앙 정렬로 변경 */
+    text-align: center;
+    /* 텍스트도 중앙 정렬 */
+  }
+
+  .portfolio-image {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 300px;
+    max-width: 500px;
+    /* 이미지 최대 너비 제한 */
+    margin: 0 auto;
+    /* 중앙 정렬 */
+  }
+
+  .portfolio-content {
+    max-width: 100%;
+    padding: 10px 20px;
+    /* 양쪽 패딩 추가 */
+    margin: 0 auto;
+    /* 중앙 정렬 */
+    text-align: center;
+    /* 텍스트 중앙 정렬 */
+  }
+
+  .portfolio-content h3 {
+    text-align: center;
+    /* 제목 중앙 정렬 */
+  }
+
+  .portfolio-desc-en,
+  .portfolio-desc-kr {
+    text-align: center;
+    /* 설명 중앙 정렬 */
+    max-width: 500px;
+    /* 텍스트 최대 너비 제한 */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* 포트폴리오 아이템별 작은 서클도 중앙으로 */
+  .portfolio-circle {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 15px;
+  }
+
+  .portfolio-item:hover .portfolio-circle {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.2);
+  }
+
+  .portfolio-list {
+    gap: 80px;
+  }
+
+  .portfolio-inner {
+    padding: 0 20px;
+  }
+}
+
+/* 섹션 6 스냅 센서 영역 */
+.section-snap-sensor {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  /* 높이는 작게 설정 - 눈에 보이지 않음 */
+  background-color: transparent;
+  z-index: -1;
+}
+
+/* 반응형 미디어 쿼리 */
+@media (max-width: 1024px) {
+  .portfolio-image {
+    flex: 0 0 360px;
+    width: 360px;
+    height: 280px;
+  }
+
+  .portfolio-content h3 {
+    font-size: 1.8rem;
+  }
+
+  .portfolio-list {
+    gap: 100px;
+  }
+}
+
+@media (max-width: 900px) {
+  .portfolio-item {
+    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start;
+  }
+
+  .portfolio-image {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 300px;
+  }
+
+  .portfolio-content {
+    max-width: 100%;
+    padding: 10px 0;
+  }
+
+  .portfolio-list {
+    gap: 80px;
+  }
+
+  .portfolio-inner {
+    padding: 0 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-image {
+    height: 220px;
+  }
+
+  .portfolio-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .portfolio-desc-en {
+    font-size: 0.9rem;
+  }
+
+  .portfolio-desc-kr {
+    font-size: 0.8rem;
+  }
+
+  .portfolio-list {
+    gap: 60px;
+  }
+
+  #section5 {
+    padding: 60px 0 120px;
+  }
+}
+
+/* Section 6 - 컨택트 섹션 스타일 업데이트 */
+.contact-section {
+  position: relative;
+  height: auto;
+  min-height: 100vh;
+  background-color: #D8471D;
+  /* 이미지의 주황색 배경 */
+  color: #ffffff;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 80px;
+  justify-content: center;
+  overflow: hidden;
 }
-.card {
-  display: flex;
-  align-items: center;
-  gap: 60px;
-  max-width: 1000px;
+
+/* 섹션 6에 배경 필터 추가 (섹션 1~3과 동일) */
+.contact-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  /* 투명 검정색 필터 */
+  z-index: 0;
+}
+
+.contact-inner {
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
+  padding: 80px 20px;
   position: relative;
-  background-color: transparent;
+  z-index: 1;
+  /* 필터 위에 콘텐츠 표시 */
 }
-.card-image img {
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 30px;
+
+/* 컨택트 타이틀 */
+.contact-title,
+.member-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 60px;
+  font-weight: 500;
+  font-family: "Lora", serif;
 }
-.card-content {
-  max-width: 500px;
+
+/* 컨택트 정보 영역 */
+.contact-info {
+  max-width: 800px;
+  padding-top: 20px;
+  margin: 0 auto 80px;
 }
-.card-content h2 {
-  font-size: 1.5rem;
-  font-weight: 900;
-  margin-bottom: 10px;
+
+.info-row {
+  display: flex;
+  margin-bottom: 20px;
+  align-items: baseline;
+}
+
+.info-label {
+  width: 150px;
+  text-align: right;
+  padding-right: 40px;
+  font-size: 1.2rem;
+  font-weight: 400;
+  flex-shrink: 0;
+}
+
+.info-value {
+  font-size: 1.2rem;
+  font-weight: 300;
+  flex-grow: 1;
+}
+
+/* 팀 멤버 영역 */
+.team-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.team-group {
+  flex: 0 1 auto;
+  min-width: 160px;
+  text-align: center;
+}
+
+.team-title {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.team-members {
+  text-align: center;
+}
+
+.member {
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin-bottom: 12px;
+}
+
+/* 저작권 정보 */
+.copyright {
+  margin-top: 100px;
+  text-align: right;
+  font-size: 0.8rem;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+
+/* 모바일 가운데 정렬 미디어 쿼리 추가 */
+@media (max-width: 1119px) {
+  .contact-inner {
+    padding: 120px 20px;
+    text-align: center;
+    /* 전체 텍스트 중앙 정렬 */
+  }
+
+  .contact-title,
+  .member-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  /* 컨택트 정보 중앙 정렬 */
+  .contact-info {
+    max-width: 500px;
+  }
+
+  .info-row {
+    flex-direction: column;
+    padding-top: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .info-label {
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+    padding-right: 0;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+  }
+
+  .info-value {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    color: #fffffffd;
+  }
+
+  /* 팀 멤버 중앙 정렬 */
+  .team-container {
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .team-group {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+  }
+
+  .team-title {
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .team-members {
+    text-align: center;
+    color: #fffffffd;
+  }
+
+  /* 저작권 정보도 중앙 정렬 */
+  .copyright {
+    margin-top: 70px;
+    text-align: center;
+    font-size: 0.7rem;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .contact-inner {
+    padding: 120px 15px;
+  }
+
+  .contact-title,
+  .member-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .info-value,
+  .info-label {
+    font-size: 1rem;
+  }
+
+  .team-title {
+    font-size: 1.1rem;
+  }
+
+  .member {
+    font-size: 1rem;
+  }
+
+  .copyright {
+    margin-top: 70px;
+    font-size: 0.7rem;
+  }
+}
+
+/* 푸터 레이아웃 */
+.footer {
+  width: 100%;
+  background-color: #fffffd;
+  /* 필요하면 색상 변경 */
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  /* 위쪽 정렬 */
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+/* 왼쪽/오른쪽 칸 */
+.footer-left,
+.footer-right {
+  max-width: 50%;
+  line-height: 1.4;
+}
+
+/* 왼쪽 타이틀 */
+.footer-left h2 {
+  font-family: "Lora";
+  margin: 0 0 10px 0;
+  font-size: 3rem;
+  font-weight: 700;
   color: #333;
 }
-.card-content p {
-  color: #666;
-  line-height: 1.5rem;
+
+/* 일반 텍스트 스타일 */
+.footer-left p,
+.footer-right p {
+  font-family: sans-serif;
+  font-weight: 300;
+  margin: 4px 0;
+  font-size: 0.8rem;
 }
-.card-desc-en {
-  font-family: "Noto Sans KR";
-  font-weight: 200;
-  font-size: 1rem;
-}
-.card-desc-kr {
-  font-family: "Noto Sans KR";
-  font-weight: 100;
-  font-size: 0.9rem;
+
+/* 반응형 (모바일에서 세로 스택) */
+@media (max-width: 767px) {
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 30px;
+  }
+
+  .footer-left h2 {
+    font-size: 2.4rem;
+  }
+
+  .footer-left,
+  .footer-right {
+    max-width: 100%;
+    margin-bottom: 20px;
+    font-size: 0.7rem;
+  }
 }

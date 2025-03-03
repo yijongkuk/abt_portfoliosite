@@ -144,7 +144,7 @@ h2 {
   60% {
     transform: translateY(-5px) rotate(45deg);
   }
-}
+} 
 
 /* 좌우 분할 레이아웃 (Section 1,2,3 등) */
 .split-container {
@@ -313,8 +313,22 @@ h2 {
     font-size: 0.75rem;
   }
 
+  .logo {
+    top: 30px;
+    left: 20px;
+    z-index: 1000;
+  }
+  
+
   .logo-img {
     width: 90px;
+  }
+
+  .contact {
+    position: fixed;
+    top: 30px;
+    right: 20px;
+    z-index: 1000;
   }
 
   .contact-img {

@@ -472,6 +472,10 @@ h2 {
     margin-right: 0;
     margin-bottom: 0;
   }
+
+  #section4 .center-content .intro-title {
+    padding: 3rem;
+  }
 }
 
 /* 섹션 5 스타일 */

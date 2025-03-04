@@ -65,15 +65,15 @@ function animateSection1OnLoad() {
   }
 }
 
-// 테마 전환 로직 설정
+/// 테마 전환 로직 설정 - 수정 버전
 function setupThemeSwitching() {
   document.querySelectorAll(".section").forEach((sec) => {
     const theme = sec.getAttribute("data-theme") || "dark";
     
     ScrollTrigger.create({
       trigger: sec,
-      start: "top 50%",
-      end: "bottom 50%",
+      start: "top top", // 섹션 상단이 화면 상단에 닿았을 때로 변경
+      end: "bottom top", // 섹션 하단이 화면 상단에 닿았을 때
       onEnter: () => applyTheme(theme),
       onEnterBack: () => applyTheme(theme)
     });
